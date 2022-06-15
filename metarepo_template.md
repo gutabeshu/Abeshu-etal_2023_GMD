@@ -17,10 +17,10 @@ A F M Kamal Chowdhury<sup>5</sup>, Chris Vernon<sup>3</sup>, and Hong-Yi Li<sup>
 \* corresponding author:  hongyili.jadison@gmail.com  
 
 ## Abstract
-In this paper the authors develop a long-term global energy-economic model which is capable of assessing alternative energy evolutions over periods of up to 100 years. The authors have sought to construct the model so that it can perform its assigned task with as simple a modelling system as possible. The model structure is fully documented and a brief summary of results is given.
+This study enhances an existing global hydrology model, Xanthos, by adding a new water management module, treating irrigation, hydropower, and flood-control reservoirs differently. We determine a unique operation rule for each of 3790 large reservoirs globally based on their primary purposes, i.e., hydropower, irrigation, flood-control or others. We apply the enhanced Xanthos globally at a 0.5-degree spatial resolution. The model performance is satisfactory in reproducing observed streamflow variability under normal and water scarcity conditions at 91 large river basins with good data availability. Hydropower reservoirs' simulated storage and release patterns are quite different from flood-control reservoirs, suggesting significant implications for freshwater resources management at the regional or larger scales. This new global water management modeling framework will allow for the assessment of future reservoir development and management from a coupled human-natural system perspective. 
 
 ## Journal reference
-Edmonds, J., & Reilly, J. (1983). A long-term global energy-economic model of carbon dioxide release from fossil fuel use. Energy Economics, 5(2), 74-88. DOI: https://doi.org/10.1016/0140-9883(83)90014-2
+Abeshu, G.W., Fuqiang Tian, F., Hongchang Hu, H., Yuan Zhuang, Y., Hejazi, M., Sean Turner, S., Thomas Wild, T., Mengqi Zhao, M., Chowdhury, K., Vernon, C., and Li, H., A new water management module for global hydrologic models. Journal of Hydrology 
 
 ## Code reference
 References for each minted software release for all code involved.  
