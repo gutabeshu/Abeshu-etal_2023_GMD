@@ -1,6 +1,6 @@
 _your zenodo badge here_
 
-# lastname-etal_year_journal
+# Abeshu-etal_2022_Journal of Hydrology
 
 **A long-term global energy-economic model of carbon dioxide release from fossil fuel use**
 
