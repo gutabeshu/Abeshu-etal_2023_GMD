@@ -4,14 +4,17 @@ _your zenodo badge here_
 
 **A new representation of water management for global hydrological models**
 
-Guta Wakbulcho Abeshu<sup>1</sup>, Fuqiang Tian, Hongchang Hu, Yuan Zhuang, Mohamad Hejazi, Sean Turner, Thomas Wild, Mengqi Zhao, A F M Kamal Chowdhury, Chris Vernon, and Hong-Yi Li<sup>1\*</sup>
+Guta Wakbulcho Abeshu<sup>1</sup>, Fuqiang Tian<sup>2</sup>, Hongchang Hu<sup>2</sup>, Yuan Zhuang<sup>2</sup>, 
+Mohamad Hejazi<sup>3</sup>, Sean Turner<sup>3</sup>, Thomas Wild<sup>3</sup>, Mengqi Zhao<sup>4</sup>, 
+A F M Kamal Chowdhury<sup>5</sup>, Chris Vernon<sup>3</sup>, and Hong-Yi Li<sup>1\*</sup>
 
+<sup>1 </sup> Department of Civil and Environmental Engineering, University of Houston, Houston, TX, 77204, US
+<sup>2 </sup> Department of Hydraulic Engineering, Tsinghua University, Beijing, China
+<sup>3 </sup> Joint Global Change Research Institute, Pacific Northwest National Laboratory, College Park, MD 20740, US
+<sup>4 </sup> Pacific Northwest National Laboratory, Richland, WA 99354, US
+<sup>5 </sup> Earth System Science Interdisciplinary Center (ESSIC), University of Maryland, College Park, MD 20740, US
 
-Jae Edmonds<sup>1\*</sup> and John Reilly<sup>1</sup>
-
-<sup>1 </sup> Institute for Energy Analysis, Oak Ridge Associated Universities, 1346 Connecticut Avenue, NW, Washington, DC 20036, USA
-
-\* corresponding author:  email@myorg.gov
+\* corresponding author:  hongyili.jadison@gmail.com  
 
 ## Abstract
 In this paper the authors develop a long-term global energy-economic model which is capable of assessing alternative energy evolutions over periods of up to 100 years. The authors have sought to construct the model so that it can perform its assigned task with as simple a modelling system as possible. The model structure is fully documented and a brief summary of results is given.
