@@ -2,7 +2,10 @@ _your zenodo badge here_
 
 # Abeshu-etal_2022_Journal of Hydrology
 
-**A long-term global energy-economic model of carbon dioxide release from fossil fuel use**
+**A new representation of water management for global hydrological models**
+
+Guta Wakbulcho Abeshu<sup>1</sup>, Fuqiang Tian, Hongchang Hu, Yuan Zhuang, Mohamad Hejazi, Sean Turner, Thomas Wild, Mengqi Zhao, A F M Kamal Chowdhury, Chris Vernon, and Hong-Yi Li<sup>1\*</sup>
+
 
 Jae Edmonds<sup>1\*</sup> and John Reilly<sup>1</sup>
 
