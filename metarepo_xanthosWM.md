@@ -36,7 +36,7 @@ Human, I.M. (2021, April 14). Project/repo:v0.1.0 (Version v0.1.0). Zenodo. http
 ### Input data
 Reference for each minted data source for your input data.  For example:
 
-- **Forcing Data**
+- **Forcing Data: **
 In the study, we used gridded climatic data from the WATer and global CHange (WATCH; Weedon et al., 2011) dataset from 1971 to 2001. The global monthly datasets include precipitation, maximum temperature, relative humidity and minimum temperature.
 
 
