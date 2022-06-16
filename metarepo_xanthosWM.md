@@ -51,7 +51,7 @@ Observed streamflow data for model parameter indentifcation and validation are o
 ### Output data
 Reference for each minted data source for your output data.  For example:
 
-Human, I.M. (2021). My output dataset name [Data set]. DataHub. https://doi.org/some-doi-number
+Abeshu, G.W. (2022). My output dataset name [Data set]. DataHub. https://doi.org/some-doi-number
 
 ## Contributing modeling software
 | Model | Version | Repository Link | DOI |
