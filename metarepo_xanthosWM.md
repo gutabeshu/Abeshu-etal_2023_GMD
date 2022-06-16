@@ -46,7 +46,7 @@ Human, I.M. (2021). My output dataset name [Data set]. DataHub. https://doi.org/
 ## Contributing modeling software
 | Model | Version | Repository Link | DOI |
 |-------|---------|-----------------|-----|
-| model 1 | version | link to code repository | link to DOI dataset |
+| Xanthos | version | https://github.com/JGCRI/xanthos | link to DOI dataset |
 | model 2 | version | link to code repository | link to DOI dataset |
 | component 1 | version | link to code repository | link to DOI dataset |
 
