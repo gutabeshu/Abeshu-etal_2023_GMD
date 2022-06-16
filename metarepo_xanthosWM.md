@@ -37,7 +37,7 @@ Human, I.M. (2021, April 14). Project/repo:v0.1.0 (Version v0.1.0). Zenodo. http
 The following are input data required to run the model
 
 - **Forcing Data:**
-In the study, we used gridded climatic data from the WATer and global CHange (WATCH; Weedon et al., 2011) dataset from 1971 to 2001. The global monthly datasets include precipitation, maximum temperature, relative humidity and minimum temperature.
+In the study, we used gridded climatic data from the WATer and global CHange (WATCH; Weedon et al., 2011) dataset from 1971 to 2001. The global monthly datasets include precipitation, maximum temperature, relative humidity and minimum temperature. DataHub: https://www.isimip.org/gettingstarted/input-data-bias-adjustment/details/3/
 
 - **Water demand and water use data:**
 Monthly water demand and consumptive water use data for various sectors at a 0.5-degree resolution are from Huang et al. (2018), which are available from 1971 to 2010. DataHub: https://doi.org/10.5281/zenodo.1209296
