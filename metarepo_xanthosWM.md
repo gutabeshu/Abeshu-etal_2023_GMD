@@ -57,8 +57,7 @@ Abeshu, G.W. (2022). My output dataset name [Data set]. DataHub. https://doi.org
 | Model | Version | Repository Link | DOI |
 |-------|---------|-----------------|-----|
 | Xanthos | version | https://github.com/JGCRI/xanthos | https://doi.10.5281/zenodo.5177210 |
-| model 2 | version | link to code repository | link to DOI dataset |
-| component 1 | version | link to code repository | link to DOI dataset |
+
 
 ## Reproduce my experiment
 Fill in detailed info here or link to other documentation that is a thorough walkthrough of how to use what is in this repository to reproduce your experiment.
