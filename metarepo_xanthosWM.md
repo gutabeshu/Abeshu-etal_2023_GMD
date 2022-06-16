@@ -46,7 +46,7 @@ Monthly water demand and consumptive water use data for various sectors at a 0.5
 Global reservoir data are obtained from the GRanD dataset (Lehner et al., 2011). The GRanD database we use here only considers reservoirs with storage capacity values greater than 0.1 km3. Reservoirs with missing storage capacity and those identified with purposes such as tide control are dropped, reducing the total GranD reservoirs from 6862 to 6847. DataHub: https://doi.org/10.7927/H4HH6H08 
 
 - **Streamflow Data:**
-Observed streamflow data for model parameter indentifcation and validation are obtained from the Global Runoff Data Center (GRDC) (https://www.bafg.de/GRDC). 
+Observed streamflow data for model parameter indentifcation and validation are obtained from the Global Runoff Data Center (GRDC)DataHub: https://www.bafg.de/GRDC 
 
 ### Output data
 Reference for each minted data source for your output data.  For example:
