@@ -86,12 +86,7 @@ Check each file listed in [Table 5](#table5) and modify every directory within t
 
 | Model | Programming Language | Files to be Modified |
 |---|:-:|---|
-| Xanthos | Python 3.3+ | under xanthos/example: <br /> (1) pm_abcd_mrtm_wm.ini <br /> under xanthos/example: <br /> (2) future_sim_IDBFinalRuns.py <br /> (3) watch_impacts.ini <br /> (4) watch_wfdei_sim.py |
-| Demeter | Python 2.7 | under demeter/example: <br /> (1) config_LAC.ini <br /> (2) example_LAC.py |
-| Tethys | Python 3+ | under tethys/example: <br /> (1) config.ini |
-
-
-
+| Xanthos | Python 3.3+ | under xanthos/example: <br /> (1) pm_abcd_mrtm_wm.ini <br /> under xanthos/calibrate: <br /> (1) calibrate_abcd_wm.py <br /> under xanthos/runoff: <br /> (1) abcd_wm.py |
 
 
 ## Reproduce my figures
