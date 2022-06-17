@@ -69,8 +69,8 @@ Fill in detailed info here or link to other documentation that is a thorough wal
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `step_one_runoff.py` | Script to run the first part of my experiment | `python3 step_one.py -f /path/to/inputdata/file_one.csv` |
-| `step_two_streamflow.py` | Script to run the last part of my experiment | `python3 step_two.py -o /path/to/my/outputdir` |
+| `step_one_runoff.py` | Script to run the first part of my experiment | `python3 step_one_runoff.py -f /path/to/inputdata/file_one.csv` |
+| `step_two_streamflow.py` | Script to run the last part of my experiment | `python3 step_two_streamflow.py -o /path/to/my/outputdir` |
 
 4. Download and unzip the output data from my experiment [Output data](#output-data)
 5. Run the following scripts in the `workflow` directory to compare my outputs to those from the publication
