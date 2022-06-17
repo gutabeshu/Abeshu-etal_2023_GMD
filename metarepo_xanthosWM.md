@@ -94,14 +94,14 @@ Use the scripts found in the `figures` directory to reproduce the figures used i
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `generate_figure_5.ipynb` | Script to generate my figure 5 | `python3 generate_figure_5.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_6.ipynb` | Script to generate my figure 6 | `python3 generate_figure_6.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_7.ipynb` | Script to generate my figure 7 | `python3 generate_figure_7.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_8.ipynb` | Script to generate my figure 8 | `python3 generate_figure_8.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_9.ipynb` | Script to generate my figure 9 | `python3 generate_figure_9.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_10.ipynb` | Script to generate my figure 10 | `python3 generate_figure_10.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_11.ipynb` | Script to generate my figure 11 | `python3 generate_figure_11.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_12.ipynb` | Script to generate my figure 12 | `python3 generate_figure_12.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_13.ipynb` | Script to generate my figure 13 | `python3 generate_figure_13.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_14.ipynb` | Script to generate my figure 14 | `python3 generate_figure_14.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_15.ipynb` | Script to generate my figure 15 | `python3 generate_figure_15.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_5.ipynb` | Script to generate  Figure 5 | `python3 generate_figure_5.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_6.ipynb` | Script to generate  Figure 6 | `python3 generate_figure_6.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_7.ipynb` | Script to generate  Figure 7 | `python3 generate_figure_7.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_8.ipynb` | Script to generate  Figure 8 | `python3 generate_figure_8.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_9.ipynb` | Script to generate  Figure 9 | `python3 generate_figure_9.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_10.ipynb` | Script to generate  Figure 10 | `python3 generate_figure_10.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_11.ipynb` | Script to generate  Figure 11 | `python3 generate_figure_11.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_12.ipynb` | Script to generate  Figure 12 | `python3 generate_figure_12.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_13.ipynb` | Script to generate  Figure 13 | `python3 generate_figure_13.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_14.ipynb` | Script to generate  Figure 14 | `python3 generate_figure_14.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_15.ipynb` | Script to generate  Figure 15 | `python3 generate_figure_15.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
