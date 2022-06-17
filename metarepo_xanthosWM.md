@@ -79,6 +79,22 @@ Fill in detailed info here or link to other documentation that is a thorough wal
 | --- | --- | --- |
 | `compare.py` | Script to compare my outputs to the original | `python3 compare.py --orig /path/to/original/data.csv --new /path/to/new/data.csv` |
 
+***File Modification***\
+Check each file listed in [Table 5](#table5) and modify every directory within those files to the directory that holds your data. For example, in configuration file 'pm_abcd_mrtm_future_impacts.ini' for xanthos model, change the directory of 'RootDir' to 'your-xanthos-location\example'.
+
+<a name="table5"></a>
+**Table 5:** Files to be modified for each model.
+
+| Model | Programming Language | Files to be Modified |
+|---|:-:|---|
+| Xanthos | Python 3.3+ | under xanthos/example: <br /> (1) pm_abcd_mrtm_future_impacts.ini <br /> (2) future_sim_IDBFinalRuns.py <br /> (3) watch_impacts.ini <br /> (4) watch_wfdei_sim.py |
+| Demeter | Python 2.7 | under demeter/example: <br /> (1) config_LAC.ini <br /> (2) example_LAC.py |
+| Tethys | Python 3+ | under tethys/example: <br /> (1) config.ini |
+
+
+
+
+
 ## Reproduce my figures
 Use the scripts found in the `figures` directory to reproduce the figures used in this publication.
 
