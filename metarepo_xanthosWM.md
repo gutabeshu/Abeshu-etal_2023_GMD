@@ -94,4 +94,14 @@ Use the scripts found in the `figures` directory to reproduce the figures used i
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `generate_figures.py` | Script to generate my figures | `python3 generate_figures.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Figure 5.py` | Script to generate my figure 5 | `python3 generate_figure5.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Figure 6.py` | Script to generate my figure 6 | `python3 generate_figure6.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Figure 7.py` | Script to generate my figure 7 | `python3 generate_figure7.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Figure 8.py` | Script to generate my figure 8 | `python3 generate_figure8.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Figure 9.py` | Script to generate my figure 9 | `python3 generate_figure9.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Figure 10.py` | Script to generate my figure 10 | `python3 generate_figure10.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Figure 11.py` | Script to generate my figure 11 | `python3 generate_figure11.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Figure 12.py` | Script to generate my figure 12 | `python3 generate_figure12.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Figure 13.py` | Script to generate my figure 13 | `python3 generate_figure13.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Figure 14.py` | Script to generate my figure 14 | `python3 generate_figure14.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Figure 15.py` | Script to generate my figure 15 | `python3 generate_figure15.py -i /path/to/inputs -o /path/to/outuptdir` |
