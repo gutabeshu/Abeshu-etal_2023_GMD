@@ -86,7 +86,7 @@ Check each file listed in [Table 5](#table5) and modify every directory within t
 
 | Model | Programming Language | Files to be Modified |
 |---|:-:|---|
-| Xanthos | Python 3.3+ | under xanthos/example: <br /> - pm_abcd_mrtm_wm.ini <br /> under xanthos/calibrate: <br /> - calibrate_abcd_wm.py <br /> under xanthos/runoff: <br /> - abcd_wm.py  <br /> under xanthos/data_reader: <br /> - data_calibration_wm.py <br />  - ini_reader.py |
+| Xanthos | Python 3.3+ | under xanthos/example:  pm_abcd_mrtm_wm.ini <br /> under xanthos/calibrate: calibrate_abcd_wm.py <br /> under xanthos/runoff: abcd_wm.py  <br /> under xanthos/data_reader: data_calibration_wm.py <br />  - ini_reader.py |
 
 
 ## Reproduce my figures
