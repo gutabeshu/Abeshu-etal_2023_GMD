@@ -1,1 +1,1 @@
-# Xantjos WM
+# Xanthos WM
