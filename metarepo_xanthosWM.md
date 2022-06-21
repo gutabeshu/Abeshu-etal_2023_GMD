@@ -1,4 +1,4 @@
-_your zenodo badge here_
+_your zenodo badge here_?
 
 # Abeshu-etal_2022_Journal of Hydrology
 
@@ -17,7 +17,7 @@ A F M Kamal Chowdhury<sup>5</sup>, Chris Vernon<sup>3</sup>, and Hong-Yi Li<sup>
 \* corresponding author:  hongyili.jadison@gmail.com  
 
 ## Abstract
-This study enhances an existing global hydrology model, Xanthos, by adding a new water management module, treating irrigation, hydropower, and flood-control reservoirs differently. We determine a unique operation rule for each of 3790 large reservoirs globally based on their primary purposes, i.e., hydropower, irrigation, flood-control or others. We apply the enhanced Xanthos globally at a 0.5-degree spatial resolution. The model performance is satisfactory in reproducing observed streamflow variability under normal and water scarcity conditions at 91 large river basins with good data availability. Hydropower reservoirs' simulated storage and release patterns are quite different from flood-control reservoirs, suggesting significant implications for freshwater resources management at the regional or larger scales. This new global water management modeling framework will allow for the assessment of future reservoir development and management from a coupled human-natural system perspective. 
+This study enhances an existing global hydrology model, Xanthos, by adding a new water management module, treating irrigation, hydropower, and flood-control reservoirs differently. We determine a unique operation rule for each of 3790 large reservoirs globally based on their primary purposes, i.e., hydropower, irrigation, flood-control or others. We apply the enhanced Xanthos globally at a 0.5-degree spatial resolution. The model performance is satisfactory in reproducing observed streamflow variability under normal and water scarcity conditions at 91 large river basins with good data availability. Hydropower reservoirs' simulated storage and release patterns are quite different from flood-control reservoirs, suggesting significant implications for freshwater resource management at the regional or larger scales. This new global water management modeling framework will allow for the assessment of future reservoir development and management from a coupled human-natural system perspective. 
 
 ## Journal reference
 Abeshu, G.W., Fuqiang Tian, F., Hongchang Hu, H., Yuan Zhuang, Y., Hejazi, M., Sean Turner, S., Thomas Wild, T., Mengqi Zhao, M., Chowdhury, K., Vernon, C., and Li, H., A new water management module for global hydrologic models. Journal of Hydrology 
@@ -94,14 +94,14 @@ Use the scripts found in the `figures` directory to reproduce the figures used i
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `generate_figure_5.ipynb`  | Script to generate  Figure 5  | `python3 generate_figure_5.ipynb -i /path/to/inputs -o /path/to/outuptdir`  |
-| `generate_figure_6.ipynb`  | Script to generate  Figure 6  | `python3 generate_figure_6.ipynb -i /path/to/inputs -o /path/to/outuptdir`  |
-| `generate_figure_7.ipynb`  | Script to generate  Figure 7  | `python3 generate_figure_7.ipynb -i /path/to/inputs -o /path/to/outuptdir`  |
-| `generate_figure_8.ipynb`  | Script to generate  Figure 8  | `python3 generate_figure_8.ipynb -i /path/to/inputs -o /path/to/outuptdir`  |
-| `generate_figure_9.ipynb`  | Script to generate  Figure 9  | `python3 generate_figure_9.ipynb -i /path/to/inputs -o /path/to/outuptdir`  |
-| `generate_figure_10.ipynb` | Script to generate  Figure 10 | `python3 generate_figure_10.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_11.ipynb` | Script to generate  Figure 11 | `python3 generate_figure_11.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_12.ipynb` | Script to generate  Figure 12 | `python3 generate_figure_12.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_13.ipynb` | Script to generate  Figure 13 | `python3 generate_figure_13.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_14.ipynb` | Script to generate  Figure 14 | `python3 generate_figure_14.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
-| `generate_figure_15.ipynb` | Script to generate  Figure 15 | `python3 generate_figure_15.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_5.ipynb`  | Script to generate Figure 5  | `python3 generate_figure_5.ipynb -i /path/to/inputs -o /path/to/outuptdir`  |
+| `generate_figure_6.ipynb`  | Script to generate Figure 6  | `python3 generate_figure_6.ipynb -i /path/to/inputs -o /path/to/outuptdir`  |
+| `generate_figure_7.ipynb`  | Script to generate Figure 7  | `python3 generate_figure_7.ipynb -i /path/to/inputs -o /path/to/outuptdir`  |
+| `generate_figure_8.ipynb`  | Script to generate Figure 8  | `python3 generate_figure_8.ipynb -i /path/to/inputs -o /path/to/outuptdir`  |
+| `generate_figure_9.ipynb`  | Script to generate Figure 9  | `python3 generate_figure_9.ipynb -i /path/to/inputs -o /path/to/outuptdir`  |
+| `generate_figure_10.ipynb` | Script to generate Figure 10 | `python3 generate_figure_10.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_11.ipynb` | Script to generate Figure 11 | `python3 generate_figure_11.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_12.ipynb` | Script to generate Figure 12 | `python3 generate_figure_12.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_13.ipynb` | Script to generate Figure 13 | `python3 generate_figure_13.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_14.ipynb` | Script to generate Figure 14 | `python3 generate_figure_14.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
+| `generate_figure_15.ipynb` | Script to generate Figure 15 | `python3 generate_figure_15.ipynb -i /path/to/inputs -o /path/to/outuptdir` |
