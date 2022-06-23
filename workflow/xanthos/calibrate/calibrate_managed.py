@@ -234,23 +234,7 @@ class CalibrateManaged:
         # set number of parameter combinations
         self.ModelPerformance = os.path.join(self.out_dir, f"basin_calibration_{self.basin_num}")
 
-        # set the bounds; if the values are exactly 0 or 1 the model returns nan
-        if self.set_calibrate == 0:
-            self.bounds = [(CalibrateManaged.LB, CalibrateManaged.UB),
-                            (CalibrateManaged.LB, 8- CalibrateManaged.LB),
-                            (CalibrateManaged.LB, CalibrateManaged.UB),
-                            (CalibrateManaged.LB, CalibrateManaged.UB),
-                            (CalibrateManaged.LB, CalibrateManaged.UB),
-                            (CalibrateManaged.LB, CalibrateManaged.UB)]
-            if self.nosnow:
-                self.bounds.pop()  # remove calibration parameter M							
-        else:
-            self.bounds = [(CalibrateManaged.LBwm1, CalibrateManaged.UBwm1),
-                           (CalibrateManaged.LBwm2, CalibrateManaged.UBwm2)]     
-
-
         # set up parameters
-        #self.params = np.zeros((1, len(self.bounds)))
         if self.set_calibrate == 0:            
             l_bounds = [CalibrateManaged.LB,
                             CalibrateManaged.LB,
@@ -265,15 +249,8 @@ class CalibrateManaged:
                             #CalibrateManaged.UB,							
                             CalibrateManaged.UB]                    
             sampler_lhc = qmc.LatinHypercube(d=5, seed=42)
-            sample_params = sampler_lhc.random(n=30000) 
-            self.sample_params_set = qmc.scale(sample_params, l_bounds, u_bounds)
-            self.mmx = 0
-            # indx_notNAN = ~(np.isnan(self.sample_params_set[:,0]) |
-			               # np.isnan(self.sample_params_set[:,1]) |
-						   # np.isnan(self.sample_params_set[:,2]) |
-						   # np.isnan(self.sample_params_set[:,3]) |
-						   # np.isnan(self.sample_params_set[:,4]) )
-						  
+            sample_params = sampler_lhc.random(n=1000000) 
+            self.sample_params_set = qmc.scale(sample_params, l_bounds, u_bounds)			  
             self.params_ro = [spotpy.parameter.List('a',list(self.sample_params_set[:,0])),        
                                 spotpy.parameter.List('b',list(self.sample_params_set[:,1])),  
                                 spotpy.parameter.List('c',list(self.sample_params_set[:,2])),  
@@ -282,8 +259,7 @@ class CalibrateManaged:
                                 #spotpy.parameter.List('n',list(self.sample_params_set[:,5])),								
                                 ] 
         elif self.set_calibrate == 1:
-            # list of parameters values for second stage calibration
-        
+            # list of parameters values for second stage calibration 
             wmp_beta  = [0.1 ,0.2 ,0.3 ,0.4 , 0.5 , 0.6 , 0.7 , 0.8 , 0.9 ,        
                             1 ,2 ,3 ,4, 5 , 6, 7, 8, 9, 10] #Give possible beta values as a List
             wmp_alpha = [0.85]                              #Give possible alpha values as a List
@@ -299,16 +275,14 @@ class CalibrateManaged:
                 else:
                     self.wm_abcdm_parameters = pd.concat([self.wm_abcdm_parameters, wm_params], 0).reset_index(drop=True)
                 
-
-
-            params_cartesian_product = np.array(self.wm_abcdm_parameters)
-            self.params_wm = [spotpy.parameter.List('a',list(params_cartesian_product[:,2])),        
-                                spotpy.parameter.List('b',list(params_cartesian_product[:,3])),  
-                                spotpy.parameter.List('c',list(params_cartesian_product[:,4])),  
-                                spotpy.parameter.List('d',list(params_cartesian_product[:,5])),  
-                                spotpy.parameter.List('m',list(params_cartesian_product[:,6])), 
-                                spotpy.parameter.List('wmbeta', list(params_cartesian_product[:,0])),
-                                spotpy.parameter.List('wmalpha',list(params_cartesian_product[:,1]))             
+            params_wm_ = np.array(self.wm_abcdm_parameters)
+            self.params_wm = [spotpy.parameter.List('a',list(params_wm_[:,2])),        
+                                spotpy.parameter.List('b',list(params_wm_[:,3])),  
+                                spotpy.parameter.List('c',list(params_wm_[:,4])),  
+                                spotpy.parameter.List('d',list(params_wm_[:,5])),  
+                                spotpy.parameter.List('m',list(params_wm_[:,6])), 
+                                spotpy.parameter.List('wmbeta', list(params_wm_[:,0])),
+                                spotpy.parameter.List('wmalpha',list(params_wm_[:,1]))             
                                 ]         
  		
         ## contributing grids for grdc  station
