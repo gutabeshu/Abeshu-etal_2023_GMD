@@ -72,7 +72,7 @@ Fill in detailed info here or link to other documentation that is a thorough wal
 | `step_one_runoff.py` | Script to run the first part of my experiment | `mpirun -n 10 python3 step_one_runoff.py` |
 | `step_two_streamflow.py` | Script to run the last part of my experiment | `mpirun -n 10 python3 step_two_streamflow.py` |
 
-4. Download and unzip the output data from my experiment [Output data](#output-data)
+4. Download and unzip the output data from my experiment [Output data](https://doi.org/10.5072/zenodo.1075813)
 5. Run the following scripts in the `workflow` directory to compare my outputs to those from the publication
 
 | Script Name | Description | How to Run |
@@ -86,7 +86,7 @@ Check each file listed in [Table 5](#table5) and modify every directory within t
 
 | Model | Programming Language | Files to be Modified |
 |---|:-:|---|
-| Xanthos | Python 3.3+ | under xanthos/example:  **pm_abcd_mrtm_wm.ini** <br /> under xanthos/calibrate: **calibrate_abcd_wm.py** <br /> under xanthos/runoff: **abcd_wm.py**  <br /> under xanthos/data_reader: **data_calibration_wm.py** <br /> under xanthos/data_reader: **ini_reader.py** |
+| Xanthos | Python 3.3+ | under xanthos/example:  **pm_abcd_mrtm_wm.ini** <br /> under xanthos/calibrate: **calibrate_managed.py** <br /> under xanthos/runoff: **abcd_managed.py**  <br /> under xanthos/data_reader: **data_calibration_managed.py** <br /> under xanthos/data_reader: **ini_reader_managed.py** <br /> under xanthos/routing: **mrtm_managed.py** |
 
 
 ## Reproduce my figures
