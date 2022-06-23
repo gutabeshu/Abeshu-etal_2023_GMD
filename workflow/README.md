@@ -1,1 +1,3 @@
-## This is the directory to place scripts or instructions in for recreating your experiment 
+## Xanthos water management
+
+This directory contains scripts required to rerun the experiments presented in the publication
