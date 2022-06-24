@@ -43,7 +43,7 @@ In the study, we used gridded climatic data from the WATer and global CHange (WA
 Monthly water demand and consumptive water use data for various sectors at a 0.5-degree resolution are from Huang et al. (2018), which are available from 1971 to 2010. DataHub: https://doi.org/10.5281/zenodo.1209296
 
 - **Reservoirs Data:**
-Global reservoir data are obtained from the GRanD dataset (Lehner et al., 2011). The GRanD database we use here only considers reservoirs with storage capacity values greater than 0.1 km3. Reservoirs with missing storage capacity and those identified with purposes such as tide control are dropped, reducing the total GranD reservoirs from 6862 to 6847. DataHub: https://doi.org/10.5072/zenodo.1075064
+Global reservoir data are obtained from the GRanD dataset (Lehner et al., 2011). The GRanD database we use here only considers reservoirs with storage capacity values greater than 0.1 km3. Reservoirs with missing storage capacity and those identified with purposes such as tide control are dropped, reducing the total GranD reservoirs from 6862 to 6847. DataHub: https://doi.org/10.5072/zenodo.1075064 
 
 - **Streamflow Data:**
 Observed streamflow data for model parameter indentifcation and validation are obtained from the Global Runoff Data Center (GRDC)DataHub: https://www.bafg.de/GRDC 
