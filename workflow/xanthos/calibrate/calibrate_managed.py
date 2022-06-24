@@ -232,22 +232,7 @@ class CalibrateManaged:
  
 
         # set the bounds; if the values are exactly 0 or 1 the model returns nan
-        if self.set_calibrate == 0:
-            self.bounds = [(CalibrateManaged.LB, CalibrateManaged.UB),
-                            (CalibrateManaged.LB, 8- CalibrateManaged.LB),
-                            (CalibrateManaged.LB, CalibrateManaged.UB),
-                            (CalibrateManaged.LB, CalibrateManaged.UB),
-                            (CalibrateManaged.LB, CalibrateManaged.UB),
-                            (CalibrateManaged.LB, CalibrateManaged.UB)]
-            if self.nosnow:
-                self.bounds.pop()  # remove calibration parameter M							
-        else:
-            self.bounds = [(CalibrateManaged.LBwm1, CalibrateManaged.UBwm1),
-                           (CalibrateManaged.LBwm2, CalibrateManaged.UBwm2)]     
-
-
         # set up parameters
-        #self.params = np.zeros((1, len(self.bounds)))
         if self.set_calibrate == 0:            
             l_bounds = [CalibrateManaged.LB,
                             CalibrateManaged.LB,
@@ -260,14 +245,13 @@ class CalibrateManaged:
                             CalibrateManaged.UB,						
                             CalibrateManaged.UB]                    
             sampler_lhc = qmc.LatinHypercube(d=5, seed=42)
-            sample_params = sampler_lhc.random(n=30000) 
+            sample_params = sampler_lhc.random(n=1000000) 
             self.sample_params_set = qmc.scale(sample_params, l_bounds, u_bounds)						  
             self.params_ro = [spotpy.parameter.List('a',list(self.sample_params_set[:,0])),        
                                 spotpy.parameter.List('b',list(self.sample_params_set[:,1])),  
                                 spotpy.parameter.List('c',list(self.sample_params_set[:,2])),  
                                 spotpy.parameter.List('d',list(self.sample_params_set[:,3])),  
-                                spotpy.parameter.List('m',list(self.sample_params_set[:,4])),  
-                                #spotpy.parameter.List('n',list(self.sample_params_set[:,5])),								
+                                spotpy.parameter.List('m',list(self.sample_params_set[:,4])),  							
                                 ] 
         elif self.set_calibrate == 1:
             # list of parameters values for second stage calibration
@@ -298,7 +282,6 @@ class CalibrateManaged:
                                 ]         
  		
         ## contributing grids for grdc  station
-        self.grdc_xanthosID = 15810 - 1
         self.dsid = routing_mod.downstream(self.reference_data.coords, self.routing_data.flow_dir, CalibrateManaged)
         self.upid = routing_mod.upstream(self.reference_data.coords, self.dsid, CalibrateManaged)
         self.basin_idx = routing_mod.grdc_stations_upstreamgrids(self.upid, self.grdc_xanthosID) # grids upstream of grdc
@@ -320,17 +303,12 @@ class CalibrateManaged:
         elif self.obs_unit == "mm_per_mth":
             self.conversion = 1.0
 
-        ##  Observation data for calibration
-        self.obs_eta_all = np.load('/project/hli/gabeshu/Guta_Working/example/input/calibration/FluxCom_WFDEI_ETdata_1979_2012.npy')
-        self.obs = np.array(pd.read_csv('/project/hli/gabeshu/Guta_Working/example/PichiMahuida_streamflow_7191_monthlymean.csv'))        
+        ##  Observation data for calibration       
         if self.set_calibrate == 0:
             self.bsn_obs_runoff_month, self.bsn_obs_runoff = timeseries_coverter(np.squeeze(self.obs[:, 3]) , start_yr=1971, ending_yr=1991)
-            #calibration data
             self.bsn_Robs_calib = self.bsn_obs_runoff
         else:
-            #self.bsn_obs = np.squeeze(self.obs[np.where(self.obs[:,0]==self.basin_num)[0], 1]) 
-
-            # calibration and validation data
+            self.bsn_obs = np.squeeze(self.obs[np.where(self.obs[:,0]==self.basin_num)[0], 3]) 
             self.bsn_Robs_calib = self.bsn_obs[0:120]
             self.bsn_Robs_valid = self.bsn_obs[121:240]
             
@@ -369,9 +347,9 @@ class CalibrateManaged:
         self.best_params = None
         self.initial_cond = 0 # to run reservoir initialization the first time only
         self.dir_storage = self.out_dir + '/reservoir_initial_storage/Sini_'
-        self.dir_simflow = self.out_dir + '/SimulatedFinal-04272022/flow/SimFlow_'
-        #self.dir_simResv = self.out_dir + '/SimulatedFinal-04272022/reservoir/SimReservoirs_'
-        #self.dir_simRels = self.out_dir + '/SimulatedFinal-04272022/reservoirRelease/ReservoirsRelease_'
+        self.dir_simflow = self.out_dir + '/SimulatedFinal/flow/SimFlow_'
+        self.dir_simResv = self.out_dir + '/SimulatedFinal/reservoir/SimReservoirs_'
+        self.dir_simRels = self.out_dir + '/SimulatedFinal/reservoirRelease/ReservoirsRelease_'
 		
 
     def bestParams_combination(self):
@@ -449,10 +427,6 @@ class CalibrateManaged:
             # runoff
             self.runoff = he.rsim.T
             self.basin_ro_data = he.rsim[:, self.basin_idx_basin].T            
-            #self.re_charge = he.recharge_.T
-            #self.re_charge_basin = self.re_charge[self.basin_idx_re,:]
-            dir_recharge = '/project/hli/gabeshu/Guta_Working/example/output/calibration/simulated-runoff/'
-            np.save(dir_recharge + 'runoff_basin' + str(self.basin_num) +'_1971_2001.npy',self.basin_ro_data) 
 			
             # load routing data
             beta_basin = np.copy(self.beta_local)			
@@ -583,11 +557,8 @@ class CalibrateManaged:
         #like2 = spotpy.objectivefunctions.kge(np.array(evaluation[0]), np.array(simulation[0])) * multiplier
         #like1 = spotpy.objectivefunctions.kge(np.array(evaluation[1]), np.array(simulation[1])) * multiplier
 
-        like1 = spotpy.objectivefunctions.kge(evaluation, simulation) * multiplier 
-        # like2 = spotpy.objectivefunctions.rsquared(evaluation, simulation)*-1
-        # like3 = abs(spotpy.objectivefunctions.pbias(evaluation, simulation))
-        
-        return like1#[like1, like2]
+        like1 = spotpy.objectivefunctions.kge(evaluation, simulation) * multiplier       
+        return like1
 
 
     def evaluation(self):
