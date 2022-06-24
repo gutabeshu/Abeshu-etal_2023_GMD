@@ -68,7 +68,7 @@ Fill in detailed info here or link to other documentation that is a thorough wal
 | Experiment Name | Description | How to Run |
 | --- | --- | --- |
 | `Runoff` | Script to run the first part of my experiment | under shell_script_to_run  **sbatch run_for_91basins.sh** edit directory to **runoff-watch-setup** in 'workflow'|
-| `Streamflow.py` | Script to run the last part of my experiment | under shell_script_to_run  **sbatch run_for_91basins.sh** edit directory to **flow-watch-setup** in 'workflow'|
+| `Streamflow` | Script to run the last part of my experiment | under shell_script_to_run  **sbatch run_for_91basins.sh** edit directory to **flow-watch-setup** in 'workflow'|
 
 4. Download and unzip the output data from my experiment [Output data](https://doi.org/10.5072/zenodo.1075813)
 5. Run the following scripts in the `workflow` directory to compare my outputs to those from the publication
