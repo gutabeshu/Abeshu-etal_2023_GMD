@@ -63,12 +63,12 @@ Fill in detailed info here or link to other documentation that is a thorough wal
 
 1. Install the software components required to conduct the experiement from [Contributing modeling software](#contributing-modeling-software)
 2. Download and install the supporting input data required to conduct the experiement from [Input data](#input-data)
-3. Run the following scripts in the `workflow` directory to re-create this experiment:
+3. Run the following notebook scripts in the `Figures` directory to re-create this experiment:
 
-| Script Name | Description | How to Run |
+| Experiment Name | Description | How to Run |
 | --- | --- | --- |
-| `step_one_runoff.py` | Script to run the first part of my experiment | `mpirun -n 10 python3 step_one_runoff.py` |
-| `step_two_streamflow.py` | Script to run the last part of my experiment | `mpirun -n 10 python3 step_two_streamflow.py` |
+| `Runoff` | Script to run the first part of my experiment | under shell_script_to_run  **sbatch run_for_91basins.sh** edit directory to **runoff-watch-setup** in 'workflow'|
+| `Streamflow.py` | Script to run the last part of my experiment | under shell_script_to_run  **sbatch run_for_91basins.sh** edit directory to **flow-watch-setup** in 'workflow'|
 
 4. Download and unzip the output data from my experiment [Output data](https://doi.org/10.5072/zenodo.1075813)
 5. Run the following scripts in the `workflow` directory to compare my outputs to those from the publication
