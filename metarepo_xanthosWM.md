@@ -78,7 +78,7 @@ Check each file listed in [Table 5](#table5) and modify every directory within t
 
 | Model | Programming Language | Files to be Modified |
 |---|:-:|---|
-| Xanthos | Python 3.3+ | under xanthos/example:  **pm_abcd_mrtm_wm.ini** <br /> under xanthos/calibrate: **calibrate_managed.py** <br /> under xanthos/runoff: **abcd_managed.py**  <br /> under xanthos/data_reader: **data_calibration_managed.py** <br /> under xanthos/data_reader: **ini_reader_managed.py** <br /> under xanthos/routing: **mrtm_managed.py** |
+| Xanthos | Python 3.3+ | under workflow/flow-watch-setup/xanthos(basin number):  **pm_abcd_mrtm.ini** under workflow/: **Basin (basin number).py** |
 
 
 ## Reproduce my figures
