@@ -1,6 +1,6 @@
 _your zenodo badge here_?
 
-# Abeshu-etal_2022_Journal of Hydrology
+# Abeshu et al., 2022, Journal of Hydrology
 
 **A new representation of water management for global hydrological models**
 
