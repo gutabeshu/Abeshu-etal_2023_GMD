@@ -183,8 +183,7 @@ class CalibrateManaged:
                                                  end_year=self.end_year)
 
         # Minimum temperature is optional; if not provided, the snow components
-        # of the model is effectively removed, so remove the model parameter
-        # for snow (M)
+        # of the model is effectively removed, so remove the model parameter for snow (M)
         self.nosnow = self.tmin is None 
 
         #dir_parameters = '/project/hli/gabeshu/Guta_Working/BasinsFile/xanthos' + str(self.basin_num)
@@ -231,8 +230,6 @@ class CalibrateManaged:
                                             hist_channel_storage_varname=self.hist_channel_storage_varname)
 
  
-        # set number of parameter combinations
-        self.ModelPerformance = os.path.join(self.out_dir, f"basin_calibration_{self.basin_num}")
 
         # set the bounds; if the values are exactly 0 or 1 the model returns nan
         if self.set_calibrate == 0:
@@ -256,24 +253,15 @@ class CalibrateManaged:
                             CalibrateManaged.LB,
                             CalibrateManaged.LB,
                             CalibrateManaged.LB,
-                            #CalibrateManaged.LB,
                             CalibrateManaged.LB]
             u_bounds = [CalibrateManaged.UB,
                             8- CalibrateManaged.LB,
                             CalibrateManaged.UB,
-                            CalibrateManaged.UB,
-                            #CalibrateManaged.UB,							
+                            CalibrateManaged.UB,						
                             CalibrateManaged.UB]                    
             sampler_lhc = qmc.LatinHypercube(d=5, seed=42)
             sample_params = sampler_lhc.random(n=30000) 
-            self.sample_params_set = qmc.scale(sample_params, l_bounds, u_bounds)
-            self.mmx = 0
-            # indx_notNAN = ~(np.isnan(self.sample_params_set[:,0]) |
-			               # np.isnan(self.sample_params_set[:,1]) |
-						   # np.isnan(self.sample_params_set[:,2]) |
-						   # np.isnan(self.sample_params_set[:,3]) |
-						   # np.isnan(self.sample_params_set[:,4]) )
-						  
+            self.sample_params_set = qmc.scale(sample_params, l_bounds, u_bounds)						  
             self.params_ro = [spotpy.parameter.List('a',list(self.sample_params_set[:,0])),        
                                 spotpy.parameter.List('b',list(self.sample_params_set[:,1])),  
                                 spotpy.parameter.List('c',list(self.sample_params_set[:,2])),  
@@ -299,8 +287,6 @@ class CalibrateManaged:
                 else:
                     self.wm_abcdm_parameters = pd.concat([self.wm_abcdm_parameters, wm_params], 0).reset_index(drop=True)
                 
-
-
             params_cartesian_product = np.array(self.wm_abcdm_parameters)
             self.params_wm = [spotpy.parameter.List('a',list(params_cartesian_product[:,2])),        
                                 spotpy.parameter.List('b',list(params_cartesian_product[:,3])),  
@@ -318,14 +304,6 @@ class CalibrateManaged:
         self.basin_idx = routing_mod.grdc_stations_upstreamgrids(self.upid, self.grdc_xanthosID) # grids upstream of grdc
         # upstream genmatrix matrix 			
         self.um, self.up = routing_mod.upstream_genmatrix(self.upid) 
-
-        #transpose data for use in the ABCD model
-        #self.basin_idx_basin = np.where(self.basin_ids == self.basin_num)[0]
-        #self.bsn_areas = self.basin_areas[self.basin_idx]        
-        #self.bsn_PET = self.pet[self.basin_idx]
-        #self.bsn_P = self.precip[self.basin_idx]
-        # initial soil moisture
-        #self.bsn_SM = self.SM[self.basin_idx] 
 
 		
         # if no tmin provided, just ensure it is larger than the rain threshold
@@ -346,25 +324,9 @@ class CalibrateManaged:
         self.obs_eta_all = np.load('/project/hli/gabeshu/Guta_Working/example/input/calibration/FluxCom_WFDEI_ETdata_1979_2012.npy')
         self.obs = np.array(pd.read_csv('/project/hli/gabeshu/Guta_Working/example/PichiMahuida_streamflow_7191_monthlymean.csv'))        
         if self.set_calibrate == 0:
-            #self.conversion = self.basin_areas[self.basin_idx_re] * 1e-6
-            #self.bsn_obs_runoff = np.squeeze(self.obs[np.where(self.obs[:,0]==self.basin_num)[0],3]) #/ (np.sum(self.bsn_areas)*1e-6)
             self.bsn_obs_runoff_month, self.bsn_obs_runoff = timeseries_coverter(np.squeeze(self.obs[:, 3]) , start_yr=1971, ending_yr=1991)
-            #print(self.bsn_obs_runoff.shape)
-            #self.bsn_obs = np.squeeze(self.obs[np.where(self.obs[:,0]==self.basin_num)[0],3])
-            #scaling_factor
-            #scaling_factor = self.scaler[np.where(self.scaler[:,0]==self.basin_num)[0], 1][0]
-            #self.bsn_obs = self.obs_eta[self.basin_idx_re,:]          
-            # et data
-            #self.obs_eta = self.obs_eta_all[:,0:276] 
-            #self.obs[self.obs < 0] = 0
-            #self.obs_eta[self.obs_eta > self.pet[:,96:372]] = self.pet[self.obs_eta > self.pet[:,96:372]]   
-            basinET = self.obs_eta_all[self.basin_idx,0:276] #* scaling_factor
-            basinPET = self.pet[self.basin_idx, 96:372] 
-            basinET[basinET > basinPET] = basinPET[basinET > basinPET]	
-            self.bsn_obs = np.nanmean(basinET, 0)#*self.conversion
-            #calibration and validation data
-            self.bsn_Robs_calib = self.bsn_obs[0:276]
-            #self.bsn_Robs_valid = self.bsn_obs#[241:372]
+            #calibration data
+            self.bsn_Robs_calib = self.bsn_obs_runoff
         else:
             #self.bsn_obs = np.squeeze(self.obs[np.where(self.obs[:,0]==self.basin_num)[0], 1]) 
 
@@ -411,24 +373,7 @@ class CalibrateManaged:
         #self.dir_simResv = self.out_dir + '/SimulatedFinal-04272022/reservoir/SimReservoirs_'
         #self.dir_simRels = self.out_dir + '/SimulatedFinal-04272022/reservoirRelease/ReservoirsRelease_'
 		
-        #runnof_pars = np.load('/project/hli/gabeshu/Guta_Working/example/input/calibration/parameters_optimalset.npy')		
-        #ro_parIndx = np.where(runnof_pars[:,0].astype(np.int32) == self.basin_num)[0]
-        #self.runnof_pars_final = runnof_pars[ro_parIndx,1:8][0]	
-		
-        #self.YalingRunoff = np.load('/project/hli/gabeshu/Guta_Working/example/RunoffYaling.npy')
-        
-        #self.runoff_params = np.load('/project/hli/gabeshu/Guta_Working/example/input/calibration/HI_abcdm_model_optimal_pars.npy')
-        #self.runoff_params = self.runoff_params[self.basin_num-1,:] 
 
-        #self.gpp_params = np.load('/project/hli/gabeshu/Guta_Working/example/input/calibration/beta_alpha_watch.npy')
-        #self.beta_params = np.tile(np.squeeze(self.gpp_params[self.basin_idx, 0]), (372, 1)).transpose()
-        #print(self.beta_params.shape) 
-        #self.alpha_params = np.squeeze(self.gpp_params[self.basin_idx, 1])
-        #self.optimal_pars = self.runoff_params[self.basin_num-1,:] 
-
-        #self.gpp_xanthos  = np.load('/project/hli/gabeshu/Guta_Working/example/input/calibration/gpp_watch_monthly_gCpermth_1979_2013.npy')
-        #self.gpp_observed = np.nanmean(self.gpp_xanthos[self.basin_idx, :], 0)
-		
     def bestParams_combination(self):
 
         self.best_params = None
@@ -452,19 +397,15 @@ class CalibrateManaged:
     def parameters(self):
         '''Returns ABCD Params'''
 
-        # if os.path.isfile(self.ModelPerformance + ".csv"):
-            # if not os.stat(self.ModelPerformance + ".csv").st_size == 0:
-                # self.best_params = self.bestParams_combination()
+        if os.path.isfile(self.ModelPerformance + ".csv"):
+            if not os.stat(self.ModelPerformance + ".csv").st_size == 0:
+                self.best_params = self.bestParams_combination()
 
-            # else:
-                # self.best_params = None
+            else:
+                self.best_params = None
 
         self.best_params = None
         if self.set_calibrate == 0:
-            # params_order = [0,1,2,3,4]
-            # params = [spotpy.parameter.Uniform(self.bounds[p][0], 
-											   # self.bounds[p][1])
-											   # for p in params_order]
             params = self.params_ro
         else:       
             params = self.params_wm
@@ -474,7 +415,6 @@ class CalibrateManaged:
     def simulation(self, pars):
         """ABCD model and mrtm routing model : this function provides simulated streamflow"""
         if self.set_calibrate == 0:	
-            #pars = self.runnof_pars_final
             he = AbcdManaged(pars=pars,
 							soil_water_initial=self.SM,
 							pet=self.pet,
@@ -485,27 +425,14 @@ class CalibrateManaged:
 							spinup_steps=self.runoff_spinup,
 							method="dist")					 
             he.emulate()
-            #self.basin_eta_data = he.actual_et.T#he.actual_et[:, self.basin_idx].T
-            #self.basin_ro_data = he.rsim.T#he.rsim[:, self.basin_idx].T            
-            #interc_aa = np.tile((self.alpha_params * np.nanmean(basin_eta_data,1)), (372, 1)).transpose()
-            #print(basin_eta_data.shape)
-            #self.gpp_sim =  np.multiply(basin_eta_data, self.beta_params) + interc_aa
-            #self.gpp_sim[self.gpp_sim < 0] = 0
-            #self.gpp_sim_basin = np.nanmean(self.gpp_sim, 0)              
             self.conversionX = np.tile(self.conversion, (372, 1))
             self.rsim =  np.nanmean(np.multiply(he.rsim[:, self.basin_idx], self.conversionX), 1)
-            self.eta_sim =  np.nanmean(he.actual_et[:, self.basin_idx], 1)
-            #self.rsim_annual = timeseries_coverter(self.rsim , start_yr=1971, ending_yr=2001)
             self.mean_monthly_data, self.mean_annual_data = timeseries_coverter(self.rsim , start_yr=1971, ending_yr=2001)
-            #print(self.rsim) 
             
-            return self.mean_annual_data[0:21]#), list(self.eta_sim[96:372])]
+            return self.mean_annual_data[0:21]
 			
         else:
             # runoff model,
-            #pars = self.runnof_pars_final
-            #if self.initial_cond == 0 : 
-            #print(pars) 
             he = AbcdManaged(pars=pars,
 							soil_water_initial=self.SM,
 							pet=self.pet,
