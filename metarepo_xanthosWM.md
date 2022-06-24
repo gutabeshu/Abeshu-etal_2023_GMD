@@ -63,7 +63,7 @@ Fill in detailed info here or link to other documentation that is a thorough wal
 
 1. Install the software components required to conduct the experiement from [Contributing modeling software](#contributing-modeling-software)
 2. Download and install the supporting input data required to conduct the experiement from [Input data](https://doi.org/10.5072/zenodo.1075813)
-3. Run the following notebook scripts in the `Figures` directory to re-create this experiment:
+3. Run the following scripts in the `workflow` directory to re-create this experiment:
 
 | Experiment Name | Description | How to Run |
 | --- | --- | --- |
@@ -71,11 +71,11 @@ Fill in detailed info here or link to other documentation that is a thorough wal
 | `Streamflow` | Script to run the last part of my experiment | under shell_script_to_run  **sbatch run_for_91basins.sh** edit directory to **flow-watch-setup** in 'workflow'|
 
 4. Download and unzip the output data from my experiment [Output data](https://doi.org/10.5072/zenodo.1075879)
-5. Run the following scripts in the `workflow` directory to compare my outputs to those from the publication
+5. Run notebook scripts in the `figure` directory to compare my outputs to those from the publication
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `compare.py` | Script to compare my outputs to the original | `python3 compare.py --orig /path/to/original/data.csv --new /path/to/new/data.csv` |
+| `Figure-X.py` | Script to compare my outputs to the original | edit the `dir_in` at the begining to your output directory|
 
 ***File Modification***\
 Check each file listed in [Table 5](#table5) and modify every directory within those files to the directory that holds your data. 
