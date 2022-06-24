@@ -234,7 +234,23 @@ class CalibrateManaged:
         # set number of parameter combinations
         self.ModelPerformance = os.path.join(self.out_dir, f"basin_calibration_{self.basin_num}")
 
+        # set the bounds; if the values are exactly 0 or 1 the model returns nan
+        if self.set_calibrate == 0:
+            self.bounds = [(CalibrateManaged.LB, CalibrateManaged.UB),
+                            (CalibrateManaged.LB, 8- CalibrateManaged.LB),
+                            (CalibrateManaged.LB, CalibrateManaged.UB),
+                            (CalibrateManaged.LB, CalibrateManaged.UB),
+                            (CalibrateManaged.LB, CalibrateManaged.UB),
+                            (CalibrateManaged.LB, CalibrateManaged.UB)]
+            if self.nosnow:
+                self.bounds.pop()  # remove calibration parameter M							
+        else:
+            self.bounds = [(CalibrateManaged.LBwm1, CalibrateManaged.UBwm1),
+                           (CalibrateManaged.LBwm2, CalibrateManaged.UBwm2)]     
+
+
         # set up parameters
+        #self.params = np.zeros((1, len(self.bounds)))
         if self.set_calibrate == 0:            
             l_bounds = [CalibrateManaged.LB,
                             CalibrateManaged.LB,
@@ -249,8 +265,15 @@ class CalibrateManaged:
                             #CalibrateManaged.UB,							
                             CalibrateManaged.UB]                    
             sampler_lhc = qmc.LatinHypercube(d=5, seed=42)
-            sample_params = sampler_lhc.random(n=1000000) 
-            self.sample_params_set = qmc.scale(sample_params, l_bounds, u_bounds)			  
+            sample_params = sampler_lhc.random(n=30000) 
+            self.sample_params_set = qmc.scale(sample_params, l_bounds, u_bounds)
+            self.mmx = 0
+            # indx_notNAN = ~(np.isnan(self.sample_params_set[:,0]) |
+			               # np.isnan(self.sample_params_set[:,1]) |
+						   # np.isnan(self.sample_params_set[:,2]) |
+						   # np.isnan(self.sample_params_set[:,3]) |
+						   # np.isnan(self.sample_params_set[:,4]) )
+						  
             self.params_ro = [spotpy.parameter.List('a',list(self.sample_params_set[:,0])),        
                                 spotpy.parameter.List('b',list(self.sample_params_set[:,1])),  
                                 spotpy.parameter.List('c',list(self.sample_params_set[:,2])),  
@@ -259,7 +282,8 @@ class CalibrateManaged:
                                 #spotpy.parameter.List('n',list(self.sample_params_set[:,5])),								
                                 ] 
         elif self.set_calibrate == 1:
-            # list of parameters values for second stage calibration 
+            # list of parameters values for second stage calibration
+        
             wmp_beta  = [0.1 ,0.2 ,0.3 ,0.4 , 0.5 , 0.6 , 0.7 , 0.8 , 0.9 ,        
                             1 ,2 ,3 ,4, 5 , 6, 7, 8, 9, 10] #Give possible beta values as a List
             wmp_alpha = [0.85]                              #Give possible alpha values as a List
@@ -275,14 +299,16 @@ class CalibrateManaged:
                 else:
                     self.wm_abcdm_parameters = pd.concat([self.wm_abcdm_parameters, wm_params], 0).reset_index(drop=True)
                 
-            params_wm_ = np.array(self.wm_abcdm_parameters)
-            self.params_wm = [spotpy.parameter.List('a',list(params_wm_[:,2])),        
-                                spotpy.parameter.List('b',list(params_wm_[:,3])),  
-                                spotpy.parameter.List('c',list(params_wm_[:,4])),  
-                                spotpy.parameter.List('d',list(params_wm_[:,5])),  
-                                spotpy.parameter.List('m',list(params_wm_[:,6])), 
-                                spotpy.parameter.List('wmbeta', list(params_wm_[:,0])),
-                                spotpy.parameter.List('wmalpha',list(params_wm_[:,1]))             
+
+
+            params_cartesian_product = np.array(self.wm_abcdm_parameters)
+            self.params_wm = [spotpy.parameter.List('a',list(params_cartesian_product[:,2])),        
+                                spotpy.parameter.List('b',list(params_cartesian_product[:,3])),  
+                                spotpy.parameter.List('c',list(params_cartesian_product[:,4])),  
+                                spotpy.parameter.List('d',list(params_cartesian_product[:,5])),  
+                                spotpy.parameter.List('m',list(params_cartesian_product[:,6])), 
+                                spotpy.parameter.List('wmbeta', list(params_cartesian_product[:,0])),
+                                spotpy.parameter.List('wmalpha',list(params_cartesian_product[:,1]))             
                                 ]         
  		
         ## contributing grids for grdc  station
@@ -316,13 +342,32 @@ class CalibrateManaged:
         elif self.obs_unit == "mm_per_mth":
             self.conversion = 1.0
 
-        ##  Observation data for calibration     
+        ##  Observation data for calibration
+        self.obs_eta_all = np.load('/project/hli/gabeshu/Guta_Working/example/input/calibration/FluxCom_WFDEI_ETdata_1979_2012.npy')
+        self.obs = np.array(pd.read_csv('/project/hli/gabeshu/Guta_Working/example/PichiMahuida_streamflow_7191_monthlymean.csv'))        
         if self.set_calibrate == 0:
-            self.bsn_obs_runoff_month, self.bsn_obs_runoff = timeseries_coverter(np.squeeze(self.obs[:, 3]) , start_yr=1971, ending_yr=1990)
+            #self.conversion = self.basin_areas[self.basin_idx_re] * 1e-6
+            #self.bsn_obs_runoff = np.squeeze(self.obs[np.where(self.obs[:,0]==self.basin_num)[0],3]) #/ (np.sum(self.bsn_areas)*1e-6)
+            self.bsn_obs_runoff_month, self.bsn_obs_runoff = timeseries_coverter(np.squeeze(self.obs[:, 3]) , start_yr=1971, ending_yr=1991)
+            #print(self.bsn_obs_runoff.shape)
+            #self.bsn_obs = np.squeeze(self.obs[np.where(self.obs[:,0]==self.basin_num)[0],3])
+            #scaling_factor
+            #scaling_factor = self.scaler[np.where(self.scaler[:,0]==self.basin_num)[0], 1][0]
+            #self.bsn_obs = self.obs_eta[self.basin_idx_re,:]          
+            # et data
+            #self.obs_eta = self.obs_eta_all[:,0:276] 
+            #self.obs[self.obs < 0] = 0
+            #self.obs_eta[self.obs_eta > self.pet[:,96:372]] = self.pet[self.obs_eta > self.pet[:,96:372]]   
+            basinET = self.obs_eta_all[self.basin_idx,0:276] #* scaling_factor
+            basinPET = self.pet[self.basin_idx, 96:372] 
+            basinET[basinET > basinPET] = basinPET[basinET > basinPET]	
+            self.bsn_obs = np.nanmean(basinET, 0)#*self.conversion
             #calibration and validation data
-            self.bsn_Robs_calib = self.bsn_obs_runoff
+            self.bsn_Robs_calib = self.bsn_obs[0:276]
+            #self.bsn_Robs_valid = self.bsn_obs#[241:372]
         else:
-            self.bsn_obs = np.squeeze(self.obs[np.where(self.obs[:,0]==self.basin_num)[0], 1]) 
+            #self.bsn_obs = np.squeeze(self.obs[np.where(self.obs[:,0]==self.basin_num)[0], 1]) 
+
             # calibration and validation data
             self.bsn_Robs_calib = self.bsn_obs[0:120]
             self.bsn_Robs_valid = self.bsn_obs[121:240]
@@ -362,9 +407,28 @@ class CalibrateManaged:
         self.best_params = None
         self.initial_cond = 0 # to run reservoir initialization the first time only
         self.dir_storage = self.out_dir + '/reservoir_initial_storage/Sini_'
-        self.dir_simflow = self.out_dir + '/Simulated/flow/SimFlow_'
-        self.dir_simResv = self.out_dir + '/Simulated/reservoir/SimReservoirs_'
-	
+        self.dir_simflow = self.out_dir + '/SimulatedFinal-04272022/flow/SimFlow_'
+        #self.dir_simResv = self.out_dir + '/SimulatedFinal-04272022/reservoir/SimReservoirs_'
+        #self.dir_simRels = self.out_dir + '/SimulatedFinal-04272022/reservoirRelease/ReservoirsRelease_'
+		
+        #runnof_pars = np.load('/project/hli/gabeshu/Guta_Working/example/input/calibration/parameters_optimalset.npy')		
+        #ro_parIndx = np.where(runnof_pars[:,0].astype(np.int32) == self.basin_num)[0]
+        #self.runnof_pars_final = runnof_pars[ro_parIndx,1:8][0]	
+		
+        #self.YalingRunoff = np.load('/project/hli/gabeshu/Guta_Working/example/RunoffYaling.npy')
+        
+        #self.runoff_params = np.load('/project/hli/gabeshu/Guta_Working/example/input/calibration/HI_abcdm_model_optimal_pars.npy')
+        #self.runoff_params = self.runoff_params[self.basin_num-1,:] 
+
+        #self.gpp_params = np.load('/project/hli/gabeshu/Guta_Working/example/input/calibration/beta_alpha_watch.npy')
+        #self.beta_params = np.tile(np.squeeze(self.gpp_params[self.basin_idx, 0]), (372, 1)).transpose()
+        #print(self.beta_params.shape) 
+        #self.alpha_params = np.squeeze(self.gpp_params[self.basin_idx, 1])
+        #self.optimal_pars = self.runoff_params[self.basin_num-1,:] 
+
+        #self.gpp_xanthos  = np.load('/project/hli/gabeshu/Guta_Working/example/input/calibration/gpp_watch_monthly_gCpermth_1979_2013.npy')
+        #self.gpp_observed = np.nanmean(self.gpp_xanthos[self.basin_idx, :], 0)
+		
     def bestParams_combination(self):
 
         self.best_params = None
@@ -458,6 +522,10 @@ class CalibrateManaged:
             # runoff
             self.runoff = he.rsim.T
             self.basin_ro_data = he.rsim[:, self.basin_idx_basin].T            
+            #self.re_charge = he.recharge_.T
+            #self.re_charge_basin = self.re_charge[self.basin_idx_re,:]
+            dir_recharge = '/project/hli/gabeshu/Guta_Working/example/output/calibration/simulated-runoff/'
+            np.save(dir_recharge + 'runoff_basin' + str(self.basin_num) +'_1971_2001.npy',self.basin_ro_data) 
 			
             # load routing data
             beta_basin = np.copy(self.beta_local)			
@@ -566,11 +634,10 @@ class CalibrateManaged:
                 if ii == 1 :
                     np.save(self.dir_storage + str(self.basin_num) +'.npy',self.res_prev)
                     self.initial_cond += 1
-			
-        np.save(self.dir_simflow + str(self.basin_num) +'.npy',self.Avg_ChFlow[self.grdc_xanthosID, 0:240])
-        np.save(self.dir_simResv + str(self.basin_num) +'.npy',self.ResStorage[self.us_resrv_idx, 0:240])
-        np.save(self.dir_simRels + str(self.basin_num) +'.npy',self.Qout_res_avg[self.us_resrv_idx, 0:240])
-
+        #np.save(self.dir_simflow + str(self.basin_num) +'.npy',self.Avg_ChFlow[self.grdc_xanthosID, 0:240])
+        #np.save(self.dir_simResv + str(self.basin_num) +'.npy',self.ResStorage[self.us_resrv_idx, 0:240])
+        #np.save(self.dir_simRels + str(self.basin_num) +'.npy',self.Qout_res_avg[self.us_resrv_idx, 0:240])
+        #print(self.Avg_ChFlow[self.grdc_xanthosID, 0:120])
         return self.Avg_ChFlow[self.grdc_xanthosID, 0:120]#, list(self.Avg_ChFlow[self.grdc_xanthosID, 121:240])]
 
 
@@ -627,7 +694,8 @@ class CalibrateManaged:
             sampler.sample(self.repetitions, n_obj= 1, n_pop=n_pop)#, skip_duplicates=skip_duplicates) 
             #sampler.sample(self.repetitions, ngs=50,kstop=100,peps=1e-7,pcento=1e-7)	#NSGAII 
             #optimal_params = self.bestParams_combination()
-            #kge_cal, kge_val = self.calibration_run(optimal_params)  		
+            #kge_cal, kge_val = self.calibration_run(optimal_params)  
+            #np.save('/project/hli/gabeshu/Guta_Working/Basin_ETData/optimal_params_' + str(self.basin_num) + '.npy', optimal_params)			
         else:
             sampler = spotpy.algorithms.NSGAII(self,
                                           dbname=self.ModelPerformance,
@@ -642,7 +710,10 @@ class CalibrateManaged:
     def calibration_run(self, x):
         qsim_cal = self.simulation(x)
         #qsimulated = self.sim_with_vald
-        filename_out_runoff = self.out_dir + '/Simulated/Runoff_1971_2001_Basin' + str(self.basin_num) + '.npy'
+        filename_out_eta = '/project/hli/gabeshu/Guta_Working/Basin_GPPData/ETA_1971_2001_Basin' + str(self.basin_num) + '.npy'
+        np.save(filename_out_eta, self.basin_eta_data)
+        
+        filename_out_runoff = '/project/hli/gabeshu/Guta_Working/Basin_GPPData/Runoff_1971_2001_Basin' + str(self.basin_num) + '.npy'
         np.save(filename_out_runoff, self.basin_ro_data)
         if self.set_calibrate == 0:   
             # KGE of the calibration period
