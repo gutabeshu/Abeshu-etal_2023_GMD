@@ -18,7 +18,7 @@ def run(ini):
 if __name__ == "__main__":
 
     # full path to parameterized config file
-    ini = os.path.join('/project/hli/gabeshu/Guta_Working/BasinsFile/xanthos46/pm_abcd_mrtm46.ini')
+    ini = os.path.join('/workflow/runoff-watch-setup/xanthos46/pm_abcd_mrtm46.ini')
 
     # run the model
     xth = run(ini)

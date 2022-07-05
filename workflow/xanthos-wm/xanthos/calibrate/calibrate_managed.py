@@ -245,7 +245,7 @@ class CalibrateManaged:
                             CalibrateManaged.UB,						
                             CalibrateManaged.UB]                    
             sampler_lhc = qmc.LatinHypercube(d=5, seed=42)
-            sample_params = sampler_lhc.random(n=1000000) 
+            sample_params = sampler_lhc.random(n=self.repetitions) 
             self.sample_params_set = qmc.scale(sample_params, l_bounds, u_bounds)						  
             self.params_ro = [spotpy.parameter.List('a',list(self.sample_params_set[:,0])),        
                                 spotpy.parameter.List('b',list(self.sample_params_set[:,1])),  
