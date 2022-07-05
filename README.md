@@ -86,14 +86,14 @@ Use the scripts found in the `figures` directory to reproduce the figures used i
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `Figure_5.ipynb`  | Script to generate Figure 5  | `Figure_5.ipynb change output directory /path/to/outuptdir` & run on notebook  |
-| `Figure_6.ipynb`  | Script to generate Figure 6  | `Figure_6.ipynb change output directory /path/to/outuptdir` & run on notebook  |
-| `Figure_7.ipynb`  | Script to generate Figure 7  | `Figure_7.ipynb change output directory /path/to/outuptdir` & run on notebook  |
-| `Figure_8.ipynb`  | Script to generate Figure 8  | `Figure_8.ipynb change output directory /path/to/outuptdir` & run on notebook  |
-| `Figure_9.ipynb`  | Script to generate Figure 9  | `Figure_9.ipynb change output directory /path/to/outuptdir` & run on notebook   |
-| `Figure_10.ipynb` | Script to generate Figure 10 | `Figure_10.ipynb change output directory /path/to/outuptdir` & run on notebook  |
-| `Figure_11.ipynb` | Script to generate Figure 11 | `Figure_11.ipynb change output directory /path/to/outuptdir` & run on notebook  |
-| `Figure_12.ipynb` | Script to generate Figure 12 | `Figure_12.ipynb change output directory /path/to/outuptdir` & run on notebook  |
-| `Figure_13.ipynb` | Script to generate Figure 13 | `Figure_13.ipynb change output directory /path/to/outuptdir` & run on notebook  |
-| `Figure_14.ipynb` | Script to generate Figure 14 | `Figure_14.ipynb change output directory /path/to/outuptdir` & run on notebook  |
-| `Figure_15.ipynb` | Script to generate Figure 15 | `Figure_15.ipynb change output directory /path/to/outuptdir` & run on notebook  |
+| `Figure_5.ipynb`  | Script to generate Figure 5  | `Figure_5.ipynb change input/output directory path` & run on notebook  |
+| `Figure_6.ipynb`  | Script to generate Figure 6  | `Figure_6.ipynb change input/output directory path` & run on notebook  |
+| `Figure_7.ipynb`  | Script to generate Figure 7  | `Figure_7.ipynb change input/output directory path` & run on notebook  |
+| `Figure_8.ipynb`  | Script to generate Figure 8  | `Figure_8.ipynb change input/output directory path` & run on notebook  |
+| `Figure_9.ipynb`  | Script to generate Figure 9  | `Figure_9.ipynb change input/output directory path` & run on notebook   |
+| `Figure_10.ipynb` | Script to generate Figure 10 | `Figure_10.ipynb change input/output directory path` & run on notebook  |
+| `Figure_11.ipynb` | Script to generate Figure 11 | `Figure_11.ipynb change input/output directory path` & run on notebook  |
+| `Figure_12.ipynb` | Script to generate Figure 12 | `Figure_12.ipynb change input/output directory path` & run on notebook  |
+| `Figure_13.ipynb` | Script to generate Figure 13 | `Figure_13.ipynb change input/output directory path` & run on notebook  |
+| `Figure_14.ipynb` | Script to generate Figure 14 | `Figure_14.ipynb change input/output directory path` & run on notebook  |
+| `Figure_15.ipynb` | Script to generate Figure 15 | `Figure_15.ipynb change input/output directory path` & run on notebook  |
