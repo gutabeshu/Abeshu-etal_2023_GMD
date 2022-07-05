@@ -17,7 +17,7 @@ A F M Kamal Chowdhury<sup>5</sup>, Chris Vernon<sup>3</sup>, and Hong-Yi Li<sup>
 \* corresponding author:  hongyili.jadison@gmail.com  
 
 ## Abstract
-This study enhances an existing global hydrology model, Xanthos, by adding a new water management module, treating irrigation, hydropower, and flood-control reservoirs differently. We determine a unique operation rule for each of 3790 large reservoirs globally based on their primary purposes, i.e., hydropower, irrigation, flood-control or others. We apply the enhanced Xanthos globally at a 0.5-degree spatial resolution. The model performance is satisfactory in reproducing observed streamflow variability under normal and water scarcity conditions at 91 large river basins with good data availability. Hydropower reservoirs' simulated storage and release patterns are quite different from flood-control reservoirs, suggesting significant implications for freshwater resource management at the regional or larger scales. This new global water management modeling framework will allow for the assessment of future reservoir development and management from a coupled human-natural system perspective. 
+This study enhances an existing global hydrology model, Xanthos, by adding a new water management module, treating irrigation, hydropower, and flood-control reservoirs differently. We determine a unique operation rule for each of 3790 large reservoirs globally based on their primary purposes, i.e., hydropower, irrigation, flood-control or others. We apply the enhanced Xanthos globally at a 0.5-degree spatial resolution. The model performance is satisfactory in reproducing observed stream flow variability under normal and water scarcity conditions at 91 large river basins with good data availability. Hydropower reservoirs' simulated storage and release patterns are quite different from flood-control reservoirs, suggesting significant implications for freshwater resource management at the regional or larger scales. This new global water management modeling framework will allow for the assessment of future reservoir development and management from a coupled human-natural system perspective. 
 
 ## Journal reference
 Abeshu, G.W., Fuqiang Tian, F., Hongchang Hu, H., Yuan Zhuang, Y., Hejazi, M., Sean Turner, S., Thomas Wild, T., Mengqi Zhao, M., Chowdhury, K., Vernon, C., and Li, H., A new water management module for global hydrologic models. Journal of Hydrology 
@@ -40,7 +40,7 @@ Monthly water demand and consumptive water use data for various sectors at a 0.5
 Global reservoir data are obtained from the GRanD dataset (Lehner et al., 2011). The GRanD database we use here only considers reservoirs with storage capacity values greater than 0.1 km3. Reservoirs with missing storage capacity and those identified with purposes such as tide control are dropped, reducing the total GranD reservoirs from 6862 to 6847. DataHub: https://doi.org/10.5072/zenodo.1075064 
 
 - **Streamflow Data:**
-Observed streamflow data for model parameter indentifcation and validation are obtained from the Global Runoff Data Center (GRDC)DataHub: https://www.bafg.de/GRDC 
+Observed stream flow data for model parameter identification and validation are obtained from the Global Runoff Data Center (GRDC)DataHub: https://www.bafg.de/GRDC 
 
 ### Output data
 Abeshu, G.W. (2022). Xanthos-WM output dataset name. DataHub: https://doi.org/10.5072/zenodo.1075879
@@ -55,8 +55,8 @@ Abeshu, G.W. (2022). Xanthos-WM output dataset name. DataHub: https://doi.org/10
 Fill in detailed info here or link to other documentation that is a thorough walkthrough of how to use what is in this repository to reproduce your experiment.
 
 
-1. Install the software components required to conduct the experiement from [Contributing modeling software](#contributing-modeling-software)
-2. Download and install the supporting input data required to conduct the experiement from [Input data](https://doi.org/10.5072/zenodo.1075813)
+1. Install the software components required to conduct the experiment from [Contributing modeling software](#contributing-modeling-software)
+2. Download and install the supporting input data required to conduct the experiment from [Input data](https://doi.org/10.5072/zenodo.1075813)
 3. Run the following scripts in the `workflow` directory to re-create this experiment:
 
 | Experiment Name | Description | How to Run |
@@ -68,8 +68,8 @@ Fill in detailed info here or link to other documentation that is a thorough wal
 5. Run notebook scripts in the `figure` directory to compare my outputs to those from the publication
 
 | Script Name | Description | How to Run |
-| --- | --- | --- |
-| `Figure-X.py` | Script to compare my outputs to the original | edit the `dir_in` at the begining to your output directory|
+| ---  | --- | --- |
+| `Figure_X.py` | Script to compare my outputs to the original | edit the `dir_in` at the beginning to your output directory|
 
 ***File Modification***\
 Check each file listed in [Table 5](#table5) and modify every directory within those files to the directory that holds your data. 
@@ -86,14 +86,14 @@ Use the scripts found in the `figures` directory to reproduce the figures used i
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `Figure_5.ipynb`  | Script to generate Figure 5  | `Figure_5.ipynb change input/output directory path` & run on notebook  |
-| `Figure_6.ipynb`  | Script to generate Figure 6  | `Figure_6.ipynb change input/output directory path` & run on notebook  |
-| `Figure_7.ipynb`  | Script to generate Figure 7  | `Figure_7.ipynb change input/output directory path` & run on notebook  |
-| `Figure_8.ipynb`  | Script to generate Figure 8  | `Figure_8.ipynb change input/output directory path` & run on notebook  |
-| `Figure_9.ipynb`  | Script to generate Figure 9  | `Figure_9.ipynb change input/output directory path` & run on notebook   |
-| `Figure_10.ipynb` | Script to generate Figure 10 | `Figure_10.ipynb change input/output directory path` & run on notebook  |
-| `Figure_11.ipynb` | Script to generate Figure 11 | `Figure_11.ipynb change input/output directory path` & run on notebook  |
-| `Figure_12.ipynb` | Script to generate Figure 12 | `Figure_12.ipynb change input/output directory path` & run on notebook  |
-| `Figure_13.ipynb` | Script to generate Figure 13 | `Figure_13.ipynb change input/output directory path` & run on notebook  |
-| `Figure_14.ipynb` | Script to generate Figure 14 | `Figure_14.ipynb change input/output directory path` & run on notebook  |
-| `Figure_15.ipynb` | Script to generate Figure 15 | `Figure_15.ipynb change input/output directory path` & run on notebook  |
+| `Figure_5.ipynb`  | Script to generate Figure 5    | `Figure_5.ipynb change input/output directory path` & run on notebook  |
+| `Figure_6.ipynb`  | Script to generate Figure 6    | `Figure_6.ipynb change input/output directory path` & run on notebook  |
+| `Figure_7.ipynb`  | Script to generate Figure 7    | `Figure_7.ipynb change input/output directory path` & run on notebook  |
+| `Figure_8.ipynb`  | Script to generate Figure 8    | `Figure_8.ipynb change input/output directory path` & run on notebook  |
+| `Figure_9.ipynb`  | Script to generate Figure 9    | `Figure_9.ipynb change input/output directory path` & run on notebook   |
+| `Figure_10.ipynb` | Script to generate Figure 10   | `Figure_10.ipynb change input/output directory path` & run on notebook  |
+| `Figure_11.ipynb` | Script to generate Figure 11   | `Figure_11.ipynb change input/output directory path` & run on notebook  |
+| `Figure_12.ipynb` | Script to generate Figure 12   | `Figure_12.ipynb change input/output directory path` & run on notebook  |
+| `Figure_13.ipynb` | Script to generate Figure 13   | `Figure_13.ipynb change input/output directory path` & run on notebook  |
+| `Figure_14.ipynb` | Script to generate Figure 14   | `Figure_14.ipynb change input/output directory path` & run on notebook  |
+| `Figure_15.ipynb` | Script to generate Figure 15   | `Figure_15.ipynb change input/output directory path` & run on notebook  |
