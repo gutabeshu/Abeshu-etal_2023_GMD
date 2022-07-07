@@ -467,7 +467,7 @@ class CalibrateManaged:
                         self.res_prev = 0.5 * np.squeeze(self.cpa)  # reservoir storage at beggining of the year in m3
                     else: 
                         # routing time step               
-                        self.routing_length = 120                      
+                        self.routing_length = 240                      
                         Sini_read = np.load(self.dir_storage + str(self.basin_num) +'.npy')
                         self.Sini =  np.squeeze(Sini_read)  # initial reservoir storage at time t in m3
                         self.res_prev = np.squeeze(Sini_read)  # reservoir storage at beggining of the year in m3
@@ -523,38 +523,37 @@ class CalibrateManaged:
                     if np.mod(nm, 12) == 11:
                         self.Sini = self.ResStorage[:, nm]
 
-                    # update data channels storage with reservoir effect
-                    #self.DsDt_channel = (self.Qin_res_avg - self.Qout_res_avg[:, nm])*self.yr_imth_dys[nm, 2]*24*3600
-                    #self.chs_prev = self.ChStorage[:, nm] + self.DsDt_channel
-                    #self.chs_prev[self.chs_prev < 0] = 0 
+                    #update data channels storage with reservoir effect
+                    self.DsDt_channel = (self.Qin_res_avg - self.Qout_res_avg[:, nm])*self.yr_imth_dys[nm, 2]*24*3600
+                    self.chs_prev = self.ChStorage[:, nm] + self.DsDt_channel
+                    self.chs_prev[self.chs_prev < 0] = 0 
 
                 # storage out if first run
                 if ii == 1 :
                     np.save(self.dir_storage + str(self.basin_num) +'.npy',self.res_prev)
                     self.initial_cond += 1
-        #np.save(self.dir_simflow + str(self.basin_num) +'.npy',self.Avg_ChFlow[self.grdc_xanthosID, 0:240])
-        #np.save(self.dir_simResv + str(self.basin_num) +'.npy',self.ResStorage[self.us_resrv_idx, 0:240])
-        #np.save(self.dir_simRels + str(self.basin_num) +'.npy',self.Qout_res_avg[self.us_resrv_idx, 0:240])
-        #print(self.Avg_ChFlow[self.grdc_xanthosID, 0:120])
-        return self.Avg_ChFlow[self.grdc_xanthosID, 0:120]#, list(self.Avg_ChFlow[self.grdc_xanthosID, 121:240])]
+		
+        np.save(self.dir_simflow + str(self.basin_num) +'.npy',self.Avg_ChFlow[self.grdc_xanthosID, 0:240])
+        np.save(self.dir_simResv + str(self.basin_num) +'.npy',self.ResStorage[self.us_resrv_idx, 0:240])
+        np.save(self.dir_simRels + str(self.basin_num) +'.npy',self.Qout_res_avg[self.us_resrv_idx, 0:240])
+        self.simulated_flow = self.Avg_ChFlow[self.grdc_xanthosID, 0:240]
+ 
+        return self.Avg_ChFlow[self.grdc_xanthosID, 0:120]
 
 
     @staticmethod
-    def objectivefunction(simulation, evaluation, method='sceua'):
+    def objectivefunction(simulation, evaluation, metric ='kge'):
         """Calculates Model Performance.
         Objective function to be minimized (if sceua is used) and maximized (all others)
         """
-        # sceua requires minimization which will result in a negative KGE
-        if method == 'sceua':
+        # requires minimization which will result in a negative KGE
+        if method == 'kge':
             multiplier = -1
         else:
-            multiplier = 1
-
-				
-        #like2 = spotpy.objectivefunctions.kge(np.array(evaluation[0]), np.array(simulation[0])) * multiplier
-        #like1 = spotpy.objectivefunctions.kge(np.array(evaluation[1]), np.array(simulation[1])) * multiplier
+            multiplier =  1
 
         like1 = spotpy.objectivefunctions.kge(evaluation, simulation) * multiplier       
+		
         return like1
 
 
@@ -575,7 +574,8 @@ class CalibrateManaged:
         # parallel ='seq' # Runs everthing in sequential mode
         np.random.seed(2000) # Makes the results reproduceable
         skip_duplicates = True
-        n_pop = 20    
+        n_pop = 20
+        self.repetitions = int(self.repetitions / n_pop)       
         if self.set_calibrate == 0:	 
             sampler = spotpy.algorithms.NSGAII(self,
                                           dbname=self.ModelPerformance,  
@@ -585,9 +585,9 @@ class CalibrateManaged:
                                           parallel='mpi' 
                                           )
                                         
-            sampler.sample(self.repetitions, n_obj= 1, n_pop=n_pop)#, skip_duplicates=skip_duplicates) 
+            sampler.sample(self.repetitions, n_obj= 1, n_pop=n_pop)
             optimal_params = self.bestParams_combination()
-            kge_cal = self.calibration_run(optimal_params)  	
+            kge_cal, kge_val = self.calibration_run(optimal_params)  	
         else:
             sampler = spotpy.algorithms.NSGAII(self,
                                           dbname=self.ModelPerformance,
@@ -598,27 +598,28 @@ class CalibrateManaged:
 			self.repetitions = self.wm_abcdm_parameters.shape[0]     
             sampler.sample(self.repetitions, n_obj= 1, n_pop = 20)			
             optimal_params = self.bestParams_combination()
-            kge_cal = self.calibration_run(optimal_params)  
+            kge_cal, kge_val = self.calibration_run(optimal_params)  
 
     def calibration_run(self, x):
-        qsim_cal = self.simulation(x)
-
-        if self.set_calibrate == 0:   
+        
+        if self.set_calibrate == 0:  
+            qsim_cal = self.simulation(x)		
             # KGE of the calibration period
             kge_cal = spotpy.objectivefunctions.kge(self.bsn_obs_runoff, qsim_cal)
             kge_val = spotpy.objectivefunctions.kge(self.bsn_obs_runoff, qsim_cal)
             print("Calibration KGE: {}".format(kge_cal))                   
             
         else:
+            self.sim_with_calval = self.simulated_flow
             # KGE of the calibration period
-            kge_cal = spotpy.objectivefunctions.kge(self.bsn_obs[0:120], self.sim_with_vald[0:120])
+            kge_cal = spotpy.objectivefunctions.kge(self.bsn_obs[0:120], self.sim_with_calval[0:120])
             # KGE of the validation period
-            kge_val = spotpy.objectivefunctions.kge(self.bsn_obs[121:240], self.sim_with_vald[121:240])
+            kge_val = spotpy.objectivefunctions.kge(self.bsn_obs[121:240], self.sim_with_calval[121:240])
             print("Calibration KGE: {}, Validation KGE: {}".format(kge_cal, kge_val))                   
             ## NSE of the calibration period
-            nse_cal = spotpy.objectivefunctions.nashsutcliffe(self.bsn_obs[0:120], self.sim_with_vald[0:120])
+            nse_cal = spotpy.objectivefunctions.nashsutcliffe(self.bsn_obs[0:120], self.sim_with_calval[0:120])
             ## NSE of the validation period
-            nse_val = spotpy.objectivefunctions.nashsutcliffe(self.bsn_obs[121:240], self.sim_with_vald[121:240])
+            nse_val = spotpy.objectivefunctions.nashsutcliffe(self.bsn_obs[121:240], self.sim_with_calval[121:240])
             print("Calibration NSE: {}, Validation NSE: {}".format(nse_cal, nse_val))
 
 
