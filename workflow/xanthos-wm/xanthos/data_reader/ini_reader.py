@@ -532,7 +532,7 @@ class ConfigReader:
     @staticmethod
     def ck_obs_unit(set_calib, unit):
         """Check the defined unit of the calibration data input."""
-        valid_runoff = ('km3_per_mth', 'mm_per_mth')
+        valid_runoff = ('km3_per_mth', 'mm_per_mth','m3_per_sec')
         valid_streamflow = ('m3_per_sec')
 
         if set_calib == 0:

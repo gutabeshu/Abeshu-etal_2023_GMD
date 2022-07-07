@@ -186,9 +186,6 @@ class CalibrateManaged:
         # of the model is effectively removed, so remove the model parameter for snow (M)
         self.nosnow = self.tmin is None 
 
-        #dir_parameters = '/project/hli/gabeshu/Guta_Working/BasinsFile/xanthos' + str(self.basin_num)
-        #self.ro_params = np.load( dir_parameters +'/optimal_runoff_parameters.npy')
-
         # index for gauge station locations
         if self.set_calibrate == 1:
             self.grdcData_info  = np.copy(self.calib_data.grdc_coord_index_file)
@@ -578,8 +575,7 @@ class CalibrateManaged:
         # parallel ='seq' # Runs everthing in sequential mode
         np.random.seed(2000) # Makes the results reproduceable
         skip_duplicates = True
-        n_pop = 20
-        self.repetitions = 1500       
+        n_pop = 20    
         if self.set_calibrate == 0:	 
             sampler = spotpy.algorithms.NSGAII(self,
                                           dbname=self.ModelPerformance,  
@@ -590,41 +586,28 @@ class CalibrateManaged:
                                           )
                                         
             sampler.sample(self.repetitions, n_obj= 1, n_pop=n_pop)#, skip_duplicates=skip_duplicates) 
-            #sampler.sample(self.repetitions, ngs=50,kstop=100,peps=1e-7,pcento=1e-7)	#NSGAII 
-            #optimal_params = self.bestParams_combination()
-            #kge_cal, kge_val = self.calibration_run(optimal_params)  
-            #np.save('/project/hli/gabeshu/Guta_Working/Basin_ETData/optimal_params_' + str(self.basin_num) + '.npy', optimal_params)			
+            optimal_params = self.bestParams_combination()
+            kge_cal = self.calibration_run(optimal_params)  	
         else:
             sampler = spotpy.algorithms.NSGAII(self,
                                           dbname=self.ModelPerformance,
                                           dbformat="csv",
                                           dbappend=False,
                                           save_sim=True, parallel='mpi' )
-            self.repetitions = 100#self.wm_abcdm_parameters.shape[0]     
+            
+			self.repetitions = self.wm_abcdm_parameters.shape[0]     
             sampler.sample(self.repetitions, n_obj= 1, n_pop = 20)			
-            #sampler.sample(self.repetitions) #, ngs=127, kstop=self.repetitions, peps=0, pcento=0) 
-
+            optimal_params = self.bestParams_combination()
+            kge_cal = self.calibration_run(optimal_params)  
 
     def calibration_run(self, x):
         qsim_cal = self.simulation(x)
-        #qsimulated = self.sim_with_vald
-        filename_out_eta = '/project/hli/gabeshu/Guta_Working/Basin_GPPData/ETA_1971_2001_Basin' + str(self.basin_num) + '.npy'
-        np.save(filename_out_eta, self.basin_eta_data)
-        
-        filename_out_runoff = '/project/hli/gabeshu/Guta_Working/Basin_GPPData/Runoff_1971_2001_Basin' + str(self.basin_num) + '.npy'
-        np.save(filename_out_runoff, self.basin_ro_data)
+
         if self.set_calibrate == 0:   
             # KGE of the calibration period
-            kge_cal = spotpy.objectivefunctions.kge(self.bsn_Robs_calib, self.eta_sim[96:372])
-            # KGE of the validation period
-            kge_val = spotpy.objectivefunctions.kge(self.bsn_Robs_calib, self.eta_sim[96:372])
-            print("Calibration KGE: {}, Validation KGE: {}".format(kge_cal, kge_val))                   
-            ## NSE of the calibration period
-            #nse_cal = spotpy.objectivefunctions.nashsutcliffe(self.bsn_obs[0:240], self.sim_with_vald[0:240])
-            ## NSE of the validation period
-            #nse_val = spotpy.objectivefunctions.nashsutcliffe(self.bsn_obs[241:480], self.sim_with_vald[241:480])
-            #print("Calibration NSE: {}, Validation NSE: {}".format(nse_cal, nse_val))
-            
+            kge_cal = spotpy.objectivefunctions.kge(self.bsn_obs_runoff, qsim_cal)
+            kge_val = spotpy.objectivefunctions.kge(self.bsn_obs_runoff, qsim_cal)
+            print("Calibration KGE: {}".format(kge_cal))                   
             
         else:
             # KGE of the calibration period
@@ -639,8 +622,7 @@ class CalibrateManaged:
             print("Calibration NSE: {}, Validation NSE: {}".format(nse_cal, nse_val))
 
 
-  
-        return kge_cal, kge_val #qsimulated, self.bsn_obs, 
+        return kge_cal, kge_val 
 
 
 def process_basin(config_obj, calibration_data, pet, router_function=None):
@@ -694,27 +676,6 @@ def get_calib_data(performance_file, method='sceua'):
         _perf_calib_df[:, 0] = _perf_calib_df[:, 0]*multiplier
     return _perf_calib_df  
 
-
-def get_calib_data2(performance_file, method='sceua'):
-    """Read in HDF data"""
-
-    performance_data  = pd.read_csv(performance_file)
-    performance_data2 = performance_data.sort_values(by = 'like2',ascending=True).reset_index(drop=True)
-    
-    #indx_perf = performance_data2['like4'] < 0.5
-    performance_data3 = performance_data2#[indx_perf]#.head(100)
-    # performance_data4 = performance_data3.drop(['like1', 'like2', 'like3', 'like4', 'like5', 'like6', 'like7', 
-	                                            # 'like8', 'like9', 'like10', 'like11', 'like12', 'like13', 
-	                                            # 'like14', 'like15', 'like16', 'like17', 'like18', 'like19', 	
-	                                            # 'like20', 'like21', 'like22', 'like23', 'like24', 												
-	                                            # 'chain'], 1)
-    performance_data4 = performance_data3[['like20', 'like21', 'like22', 'like23', 'like24']]
-
-    #performance_data4 = performance_data3.drop(['like1','like2','chain'], 1)
-
-		
-    return performance_data3, np.array(performance_data4)
-
 			
 def plot_kge(calibration_result_file, output_file_name, dpi=300, figsize=(9, 5)):
     """Plot the KGE result of a calibrated basin"""
@@ -736,69 +697,7 @@ def plot_kge(calibration_result_file, output_file_name, dpi=300, figsize=(9, 5))
     fig.savefig(output_file_name, dpi=dpi)
 
     return plt
-	
-def LME(evaluation, simulation):
-     
-    #correlation coefficient
-    r = spotpy.objectivefunctions.correlationcoefficient(evaluation, simulation)
-    #mean
-    mu_eval = np.nanmean(evaluation)
-    mu_simn = np.nanmean(simulation)
-    #std
-    std_eval = np.nanstd(evaluation)
-    std_simn = np.nanstd(simulation)
-    #
-    k1 = r*(std_simn/std_eval)
-    betaB = (mu_simn/mu_eval)
-    #LME
-    LMEx = 1 - np.sqrt((k1-1)**2 + (betaB-1)**2)
 
-    return LMEx	 	
-    
-def precip_seasonality(data_dd):
-    from datetime import date, timedelta
-    sdate = date(1971,1,1)
-    edate = date(2010, 12, 31)
-    data_ts = pd.DataFrame(data_dd)
-    data_ts.index = pd.date_range(start=sdate, end=edate, freq='MS')
-        
-    mean_monthly = data_ts.groupby(data_ts.index.month).mean()
-    mean_annual  = mean_monthly.sum()
-    SI = np.sum(np.abs(mean_monthly - (mean_annual/12))) / mean_annual
-    return np.array(SI)    
-	
-	
-def seasonality_index(data_array):
-    import numpy as np
-    from datetime import date, timedelta
-    sdate = date(1971,1,1)
-    if len(data_array)==240:
-        edate = date(1990, 12, 31)
-    elif len(data_array)==480:
-        edate = date(2010, 12, 31)        
-    data_ts = pd.DataFrame(data_array)
-    data_ts.index = pd.date_range(start=sdate, end=edate, freq='MS')
-    ##
-    mean_monthly = np.squeeze(np.array(data_ts.groupby(data_ts.index.month).mean()))
-    phi_degree =np.array( [15.8,44.9,74.0,104.1,134.1,164.2,194.3,224.9,255.0,285.0,315.1,345.2])
-    phi_radian = np.radians(phi_degree)
-    # circularity statistics
-    sin_phi = np.sin(phi_radian)
-    cos_phi = np.cos(phi_radian)
-    C = np.sum(np.multiply(mean_monthly, cos_phi))
-    S = np.sum(np.multiply(mean_monthly, sin_phi))
-    # degree of seasonality : mean resultant vector length
-    R = np.sqrt((S**2 + C**2)) 
-    Is = R / np.sum(mean_monthly)
-    # average time of occurence
-    if ((S > 0) & (C > 0)):
-        phi_mean = np.arctan(S/C)
-    elif (C < 0):
-        phi_mean = np.arctan(S/C) + np.radians(180)
-    elif ((S < 0) & (C > 0)):
-        phi_mean = np.arctan(S/C) +np.radians(360)
-
-    return Is, (phi_mean*180/np.pi), mean_monthly 	
     
 def timeseries_coverter(data_array, start_yr, ending_yr):
     import numpy as np
