@@ -19,7 +19,7 @@ A F M Kamal Chowdhury<sup>5</sup>, Chris Vernon<sup>3</sup>, and Hong-Yi Li<sup>
 This study enhances an existing global hydrology model, Xanthos, by adding a new water management module, treating irrigation, hydropower, and flood-control reservoirs differently. We determine a unique operation rule for each of 3790 large reservoirs globally based on their primary purposes, i.e., hydropower, irrigation, flood-control or others. We apply the enhanced Xanthos globally at a 0.5-degree spatial resolution. The model performance is satisfactory in reproducing observed stream flow variability under normal and water scarcity conditions at 91 large river basins with good data availability. Hydropower reservoirs' simulated storage and release patterns are quite different from flood-control reservoirs, suggesting significant implications for freshwater resource management at the regional or larger scales. This new global water management modeling framework will allow for the assessment of future reservoir development and management from a coupled human-natural system perspective. 
 
 ## Journal reference
-Abeshu, G.W., Fuqiang Tian, F., Hongchang Hu, H., Yuan Zhuang, Y., Hejazi, M., Sean Turner, S., Thomas Wild, T., Mengqi Zhao, M., Chowdhury, K., Vernon, C., and Li, H., A new water management module for global hydrologic models. Journal of Hydrology 
+Abeshu, G.W., Fuqiang Tian, F., Hongchang Hu, H., Yuan Zhuang, Y., Hejazi, M., Sean Turner, S., Thomas Wild, T., Mengqi Zhao, M., Chowdhury, K., Vernon, C., and Li, H., A new water management module for global hydrologic models. GMD
 
 ## Code reference
 https://github.com/gutabeshu/xanthos_managed
