@@ -580,36 +580,36 @@ class CalibrateManaged:
 
         if self.set_calibrate == 0:	 
             if self.calib_algorithm == 'sceua':	          
-                sampler = spotpy.algorithms.sceua(self,dbname=self.ModelPerformance +'sceua',
-                                            dbformat="csv",dbappend=False,save_sim=False)#,
-                                            #parallel='mpi' )                                          
+                sampler = spotpy.algorithms.sceua(self,dbname=self.ModelPerformance + self.calib_algorithm,
+                                            dbformat="csv",dbappend=False,save_sim=False,
+                                            parallel='mpi' )                                          
                 sampler.sample(self.repetitions)
 
             elif self.calib_algorithm == 'NSGAII':	          
 		n_pop = 10
 		self.repetitions = int(self.repetitions / n_pop)       
-		sampler = spotpy.algorithms.sceua(self,dbname=self.ModelPerformance +'NSGAII',
-                                            dbformat="csv",dbappend=False,save_sim=False)#,
-                                            #parallel='mpi' )                                                
+		sampler = spotpy.algorithms.sceua(self,dbname=self.ModelPerformance + self.calib_algorithm,
+                                            dbformat="csv",dbappend=False,save_sim=False,
+                                            parallel='mpi' )                                                
                 sampler.sample(self.repetitions, n_obj= 1, n_pop = 5)
 
             elif self.calib_algorithm == 'mcmc':	          
-                sampler = spotpy.algorithms.mcmc(self,dbname=self.ModelPerformance +'mcmc',
-                                            dbformat="csv",dbappend=False,save_sim=False)#,
-                                            #parallel='mpi' )                                          
+                sampler = spotpy.algorithms.mcmc(self,dbname=self.ModelPerformance + self.calib_algorithm,
+                                            dbformat="csv",dbappend=False,save_sim=False,
+                                            parallel='mpi' )                                          
                 sampler.sample(self.repetitions)
 
 
             elif self.calib_algorithm == 'demcz':	          
-                sampler = spotpy.algorithms.demcz(self,dbname=self.ModelPerformance +'demcz',
-                                            dbformat="csv",dbappend=False,save_sim=False)#,
-                                            #parallel='mpi' )                                            
+                sampler = spotpy.algorithms.demcz(self,dbname=self.ModelPerformance + self.calib_algorithm,
+                                            dbformat="csv",dbappend=False,save_sim=False,
+                                            parallel='mpi' )                                            
                 sampler.sample(self.repetitions)
 
             elif self.calib_algorithm == 'dream':	          
-                sampler = spotpy.algorithms.demcz(self,dbname=self.ModelPerformance +'dream',
-                                            dbformat="csv",dbappend=False,save_sim=False)#,
-                                            #parallel='mpi' )                                            
+                sampler = spotpy.algorithms.demcz(self,dbname=self.ModelPerformance + self.calib_algorithm,
+                                            dbformat="csv",dbappend=False,save_sim=False,
+                                            parallel='mpi' )                                            
                 sampler.sample(self.repetitions)
 
             optimal_params = self.bestParams_combination()
