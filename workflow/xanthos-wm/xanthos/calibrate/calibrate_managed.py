@@ -128,6 +128,7 @@ class CalibrateManaged:
             self.hist_channel_storage_varname = hist_channel_storage_varname
             self.routing_spinup = routing_spinup
             self.repetitions = repetitions
+            self.calibration_algorithm = cal_algorithm
 
         else:
             self.start_year = config_obj.StartYear
@@ -136,7 +137,8 @@ class CalibrateManaged:
             self.reference_data = DataReference(config=config_obj)
             self.routing_spinup = config_obj.routing_spinup
             self.repetitions = config_obj.repetitions
-
+            self.calibration_algorithm = config_obj.cal_algorithm
+	
             self.flow_distance_file = config_obj.flow_distance
             self.flow_direction_file = config_obj.flow_direction
             self.stream_velocity_file = config_obj.strm_veloc
@@ -541,16 +543,17 @@ class CalibrateManaged:
         return self.Avg_ChFlow[self.grdc_xanthosID, 0:120]
 
 
-    @staticmethod
-    def objectivefunction(simulation, evaluation, metric ='kge'):
+    #@staticmethod
+    def objectivefunction(self, simulation, evaluation):
         """Calculates Model Performance.
-        Objective function to be minimized (if sceua is used) and maximized (all others)
+        Objective function to be minimized (if sceua /NSGAII is used) and maximized (all others)
         """
-        # requires minimization which will result in a negative KGE
-        if method == 'kge':
+        # sceua requires minimization which will result in a negative KGE
+        method = self.calib_algorithm
+        if (method == 'sceua') | (method == 'NSGAII'):
             multiplier = -1
         else:
-            multiplier =  1
+            multiplier = 1
 
         like1 = spotpy.objectivefunctions.kge(evaluation, simulation) * multiplier       
 		
@@ -574,18 +577,41 @@ class CalibrateManaged:
         # parallel ='seq' # Runs everthing in sequential mode
         np.random.seed(2000) # Makes the results reproduceable
         skip_duplicates = True
-        n_pop = 20
-        self.repetitions = int(self.repetitions / n_pop)       
+
         if self.set_calibrate == 0:	 
-            sampler = spotpy.algorithms.NSGAII(self,
-                                          dbname=self.ModelPerformance,  
-                                          dbformat="csv",
-                                          dbappend=False,
-                                          save_sim=True,
-                                          parallel='mpi' 
-                                          )
-                                        
-            sampler.sample(self.repetitions, n_obj= 1, n_pop=n_pop)
+            if self.calib_algorithm == 'sceua':	          
+                sampler = spotpy.algorithms.sceua(self,dbname=self.ModelPerformance +'sceua',
+                                            dbformat="csv",dbappend=False,save_sim=False)#,
+                                            #parallel='mpi' )                                          
+                sampler.sample(self.repetitions)
+
+            elif self.calib_algorithm == 'NSGAII':	          
+		n_pop = 10
+		self.repetitions = int(self.repetitions / n_pop)       
+		sampler = spotpy.algorithms.sceua(self,dbname=self.ModelPerformance +'NSGAII',
+                                            dbformat="csv",dbappend=False,save_sim=False)#,
+                                            #parallel='mpi' )                                                
+                sampler.sample(self.repetitions, n_obj= 1, n_pop = 5)
+
+            elif self.calib_algorithm == 'mcmc':	          
+                sampler = spotpy.algorithms.mcmc(self,dbname=self.ModelPerformance +'mcmc',
+                                            dbformat="csv",dbappend=False,save_sim=False)#,
+                                            #parallel='mpi' )                                          
+                sampler.sample(self.repetitions)
+
+
+            elif self.calib_algorithm == 'demcz':	          
+                sampler = spotpy.algorithms.demcz(self,dbname=self.ModelPerformance +'demcz',
+                                            dbformat="csv",dbappend=False,save_sim=False)#,
+                                            #parallel='mpi' )                                            
+                sampler.sample(self.repetitions)
+
+            elif self.calib_algorithm == 'dream':	          
+                sampler = spotpy.algorithms.demcz(self,dbname=self.ModelPerformance +'dream',
+                                            dbformat="csv",dbappend=False,save_sim=False)#,
+                                            #parallel='mpi' )                                            
+                sampler.sample(self.repetitions)
+
             optimal_params = self.bestParams_combination()
             kge_cal, kge_val = self.calibration_run(optimal_params)  	
         else:
