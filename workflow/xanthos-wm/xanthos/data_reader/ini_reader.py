@@ -421,9 +421,6 @@ class ConfigReader:
             self.grdc_coord_index_file = os.path.join(self.rt_model_dir, rt_mod['grdc_coord_index_file'])
             self.Xanthos_wm_file = os.path.join(self.rt_model_dir, rt_mod['Xanthos_wm_file'])
 
-            # parameters
-            self.beta_param = float(rt_mod.get('beta', 0.0))
-            self.alpha_param = float(rt_mod.get('alpha', 0.0))
 
             try:
                 self.routing_spinup = int(rt_mod['routing_spinup'])
@@ -513,14 +510,12 @@ class ConfigReader:
         """Configure calibration settings."""
 
         self.set_calibrate = int(calibration_config['set_calibrate'])
-        self.cal_observed = calibration_config.get('observed', None)
-        self.scaler_observed = calibration_config.get('obs_scaler', None)  
-        self.abcdm_params = calibration_config.get('abcdm_params', None)     		
+        self.cal_observed = calibration_config.get('observed', None)   		
         self.obs_unit = self.ck_obs_unit(self.set_calibrate, calibration_config['obs_unit'])
         self.calib_out_dir = self.create_dir(calibration_config['calib_out_dir'])
         self.repetitions = int(calibration_config.get('repetitions', 100))
         self.cal_algorithm = calibration_config.get('calibration_algorithm', None)
-        
+
         try:
             self.cal_basins = calibration_config['calibration_basins']
             # calibration basins can be specified as either a single
@@ -533,7 +528,7 @@ class ConfigReader:
     @staticmethod
     def ck_obs_unit(set_calib, unit):
         """Check the defined unit of the calibration data input."""
-        valid_runoff = ('km3_per_mth', 'mm_per_mth','m3_per_sec')
+        valid_runoff = ('km3_per_mth', 'mm_per_mth')
         valid_streamflow = ('m3_per_sec')
 
         if set_calib == 0:
