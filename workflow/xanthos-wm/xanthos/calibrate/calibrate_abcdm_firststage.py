@@ -27,7 +27,6 @@ class Calibrate_runoff:
                  basin_idx,
                  nmonths,
                  runoff_spinup,
-                 conversion,
                  calib_algorithm,
                  params_ro
                  ):
@@ -41,7 +40,6 @@ class Calibrate_runoff:
         self.basin_idx = basin_idx
         self.nmonths = nmonths
         self.runoff_spinup = runoff_spinup
-        self.conversion = conversion
         self.calib_algorithm = calib_algorithm
         self.params_ro = params_ro
         #Runoff
@@ -65,10 +63,10 @@ class Calibrate_runoff:
                         spinup_steps=self.runoff_spinup,
                         method="dist")					 
         he.emulate()
-        self.rsim =  np.nansum(he.rsim * self.conversion, 1)
+        self.rsim =  np.nanmean(he.rsim, 1)
         annual_rsim = timeseries_coverter(self.rsim , start_yr=1971, ending_yr=2001)
 
-        return annual_rsim
+        return annual_rsim[0:20]
         
 
     #@staticmethod
@@ -83,14 +81,14 @@ class Calibrate_runoff:
         else:
             multiplier = 1
 		
-        obj1 = spotpy.objectivefunctions.kge(evaluation, simulation) * multiplier
+        obj1 = spotpy.objectivefunctions.rrmse(evaluation, simulation) #* multiplier
 
         return obj1
 
 
     def evaluation(self):
         """observed streamflow data"""
-        annual_obs = timeseries_coverter(self.ts_bsn_obs , start_yr=1971, ending_yr=2001)
+        annual_obs = timeseries_coverter(self.ts_bsn_obs , start_yr=1971, ending_yr=1990)
 
         return annual_obs
 
@@ -108,7 +106,6 @@ def calibrate_basin(pet,
                     basin_idx,
                     nmonths,
                     runoff_spinup,
-                    conversion,
                     repetitions,
                     calib_algorithm,
                     dbname_dir,
@@ -122,7 +119,6 @@ def calibrate_basin(pet,
                                         basin_idx,
                                         nmonths,
                                         runoff_spinup,
-                                        conversion,
                                         calib_algorithm,
                                         params_runoff,
                                         )
@@ -130,7 +126,7 @@ def calibrate_basin(pet,
     np.random.seed(2000) # Makes the results reproduceable
     skip_duplicates = True
     if calib_algorithm == 'sceua':	          
-        sampler = spotpy.algorithms.sceua(runoff_model_spot_setup,dbname= dbname_dir + calib_algorithm + 'runoff',
+        sampler = spotpy.algorithms.sceua(runoff_model_spot_setup,dbname= dbname_dir + calib_algorithm + '_Runoff',
                                     dbformat="csv",dbappend=False,save_sim=False)#,
                                     #parallel='mpi' )                                          
         sampler.sample(repetitions, ngs=10, kstop=10, peps=1e-7, pcento=1e-7)
@@ -138,36 +134,36 @@ def calibrate_basin(pet,
     elif calib_algorithm == 'NSGAII':	    
         n_pop = 10
         repetitions_nsgaii = int(repetitions / n_pop)         
-        sampler = spotpy.algorithms.NSGAII(runoff_model_spot_setup, dbname=dbname_dir + calib_algorithm + 'runoff',
+        sampler = spotpy.algorithms.NSGAII(runoff_model_spot_setup, dbname=dbname_dir + calib_algorithm + '_Runoff',
                                     dbformat="csv",dbappend=False,save_sim=False)#,
                                     #parallel='mpi' )                                                
         sampler.sample(repetitions_nsgaii, n_obj= 1, n_pop = n_pop)
 
     elif calib_algorithm == 'mcmc':	          
-        sampler = spotpy.algorithms.mcmc(runoff_model_spot_setup,dbname=dbname_dir + calib_algorithm + 'runoff',
+        sampler = spotpy.algorithms.mcmc(runoff_model_spot_setup,dbname=dbname_dir + calib_algorithm + '_Runoff',
                                     dbformat="csv",dbappend=False,save_sim=False)#,
                                     #parallel='mpi' )                                          
         sampler.sample(repetitions)
 
 
     elif calib_algorithm == 'demcz':	          
-        sampler = spotpy.algorithms.demcz(runoff_model_spot_setup,dbname_dir + calib_algorithm + 'runoff',
+        sampler = spotpy.algorithms.demcz(runoff_model_spot_setup,dbname_dir + calib_algorithm + '_Runoff',
                                     dbformat="csv",dbappend=False,save_sim=False)#,
                                     #parallel='mpi' )                                            
         sampler.sample(repetitions)
 
     elif calib_algorithm == 'dream':	          
-        sampler = spotpy.algorithms.dream(runoff_model_spot_setup,dbname=dbname_dir + calib_algorithm + 'runoff',
+        sampler = spotpy.algorithms.dream(runoff_model_spot_setup,dbname=dbname_dir + calib_algorithm + '_Runoff',
                                     dbformat="csv",dbappend=False,save_sim=False)#,
                                     #parallel='mpi' )                                            
         sampler.sample(repetitions)
     elif calib_algorithm == 'abc':	          
-        sampler = spotpy.algorithms.abc(runoff_model_spot_setup,dbname=dbname_dir + calib_algorithm + 'runoff',
+        sampler = spotpy.algorithms.abc(runoff_model_spot_setup,dbname=dbname_dir + calib_algorithm + '_Runoff',
                                     dbformat="csv",dbappend=False,save_sim=False)#,
                                     #parallel='mpi' )                                            
         sampler.sample(repetitions)
 
-    results = pd.read_csv(dbname_dir + calib_algorithm + 'runoff' + '.csv')
+    results = pd.read_csv(dbname_dir + calib_algorithm + '_Runoff' + '.csv')
     results_sorted = results.sort_values(by = 'like1', ascending=True).reset_index(drop=True)
     ro_params_selected = np.array(results_sorted.loc[0:100][['para',	'parb',	'parc',	'pard',	'parm']])
 
@@ -176,7 +172,7 @@ def calibrate_basin(pet,
 
 
 
-
+# converts monthly to annual
 def timeseries_coverter(data_array, start_yr, ending_yr):
     from datetime import date, timedelta
     sdate = date(start_yr,1,1)
