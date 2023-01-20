@@ -43,7 +43,7 @@ Global reservoir data are obtained from the GRanD dataset (Lehner et al., 2011).
 Observed stream flow data for model parameter identification and validation are obtained from the Global Runoff Data Center (GRDC)DataHub: https://www.bafg.de/GRDC
 
 ### Output data
-Abeshu, G.W. (2022). Xanthos-WM output dataset name. DataHub: https://doi.org/10.5072/zenodo.1075879
+Xanthos-WM output dataset name. DataHub: https://doi.org/10.5072/zenodo.1075879
 
 ## Contributing modeling software
 | Model | Version | Repository Link | DOI |
