@@ -86,8 +86,8 @@ Use the scripts found in the `figures` directory to reproduce the figures used i
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `Figure_1.drawio`  | Sketch to generate Figure 1    | `Figure_1.drawio change input/output directory path` & opens on drawio  |
-| `Figure_2.drawio`  | Sketch to generate Figure 2    | `Figure_2.drawio change input/output directory path` & opens on drawio  |
+| `Figure_1.drawio`  | Sketch to generate Figure 1    | `Figure_1.drawio` opens on drawio  |
+| `Figure_2.drawio`  | Sketch to generate Figure 2    | `Figure_2.drawio` & opens on drawio  |
 | `Figure_3.ipynb`  | Script to generate Figure 3    | `Figure_3.ipynb change input/output directory path` & run on notebook  |
 | `Figure_4.ipynb`  | Script to generate Figure 4    | `Figure_4.ipynb change input/output directory path` & run on notebook  |
 | `Figure_5.ipynb`  | Script to generate Figure 5    | `Figure_5.ipynb change input/output directory path` & run on notebook  |
