@@ -22,6 +22,7 @@ This study enhances an existing global hydrology model, Xanthos, by adding a new
 Abeshu, G.W., Fuqiang Tian, F., Hongchang Hu, H., Yuan Zhuang, Y., Hejazi, M., Sean Turner, S., Thomas Wild, T., Mengqi Zhao, M., Chowdhury, K., Vernon, C., and Li, H., A new water management module for global hydrologic models. GMD
 
 ## Code reference
+The model used in this manuscript can be found at
 https://github.com/gutabeshu/xanthos-wm
 
 ## Data reference
