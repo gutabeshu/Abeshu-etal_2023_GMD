@@ -54,6 +54,7 @@ Xanthos-WM output dataset name. DataHub: https://doi.org/10.5072/zenodo.1075879
 ## Reproduce my experiment
 Fill in detailed info here or link to other documentation that is a thorough walkthrough of how to use what is in this repository to reproduce your experiment.
 
+<p align="center"> <img src="workflow/Figure-3-Runoff Parameters Selection Strategy.png"></p>
 
 1. Install the software components required to conduct the experiment from [Contributing modeling software](#contributing-modeling-software)
 2. Download and install the supporting input data required to conduct the experiment from [Input data](https://doi.org/10.5072/zenodo.1075813)
