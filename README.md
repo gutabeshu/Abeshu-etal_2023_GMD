@@ -3,8 +3,8 @@ _your zenodo badge here_?
 # Abeshu et al., 2023, GMD
 **A new representation of water management for global hydrological models**
 
-Guta Wakbulcho Abeshu<sup>1</sup>, Fuqiang Tian<sup>2</sup>, Hongchang Hu<sup>2</sup>, Yuan Zhuang<sup>2</sup>, 
-Mohamad Hejazi<sup>3</sup>, Sean Turner<sup>3</sup>, Thomas Wild<sup>3</sup>, Mengqi Zhao<sup>4</sup>, 
+Guta Wakbulcho Abeshu<sup>1</sup>, Fuqiang Tian<sup>2</sup>, Hongchang Hu<sup>2</sup>, Yuan Zhuang<sup>2</sup>,
+Mohamad Hejazi<sup>3</sup>, Sean Turner<sup>3</sup>, Thomas Wild<sup>3</sup>, Mengqi Zhao<sup>4</sup>,
 A F M Kamal Chowdhury<sup>5</sup>, Chris Vernon<sup>3</sup>, and Hong-Yi Li<sup>1\*</sup>
 
 <sup>1 </sup> Department of Civil and Environmental Engineering, University of Houston, Houston, TX, 77204, US
@@ -13,10 +13,10 @@ A F M Kamal Chowdhury<sup>5</sup>, Chris Vernon<sup>3</sup>, and Hong-Yi Li<sup>
 <sup>4 </sup> Pacific Northwest National Laboratory, Richland, WA 99354, US
 <sup>5 </sup> Earth System Science Interdisciplinary Center (ESSIC), University of Maryland, College Park, MD 20740, US
 
-\* corresponding author:  hongyili.jadison@gmail.com  
+\* corresponding author:  hongyili.jadison@gmail.com
 
 ## Abstract
-This study enhances an existing global hydrology model, Xanthos, by adding a new water management module, treating irrigation, hydropower, and flood-control reservoirs differently. We determine a unique operation rule for each of 3790 large reservoirs globally based on their primary purposes, i.e., hydropower, irrigation, flood-control or others. We apply the enhanced Xanthos globally at a 0.5-degree spatial resolution. The model performance is satisfactory in reproducing observed stream flow variability under normal and water scarcity conditions at 91 large river basins with good data availability. Hydropower reservoirs' simulated storage and release patterns are quite different from flood-control reservoirs, suggesting significant implications for freshwater resource management at the regional or larger scales. This new global water management modeling framework will allow for the assessment of future reservoir development and management from a coupled human-natural system perspective. 
+This study enhances an existing global hydrology model, Xanthos, by adding a new water management module, treating irrigation, hydropower, and flood-control reservoirs differently. We determine a unique operation rule for each of 3790 large reservoirs globally based on their primary purposes, i.e., hydropower, irrigation, flood-control or others. We apply the enhanced Xanthos globally at a 0.5-degree spatial resolution. The model performance is satisfactory in reproducing observed stream flow variability under normal and water scarcity conditions at 91 large river basins with good data availability. Hydropower reservoirs' simulated storage and release patterns are quite different from flood-control reservoirs, suggesting significant implications for freshwater resource management at the regional or larger scales. This new global water management modeling framework will allow for the assessment of future reservoir development and management from a coupled human-natural system perspective.
 
 ## Journal reference
 Abeshu, G.W., Fuqiang Tian, F., Hongchang Hu, H., Yuan Zhuang, Y., Hejazi, M., Sean Turner, S., Thomas Wild, T., Mengqi Zhao, M., Chowdhury, K., Vernon, C., and Li, H., A new water management module for global hydrologic models. GMD
@@ -36,10 +36,10 @@ In the study, we used gridded climatic data from the WATer and global CHange (WA
 Monthly water demand and consumptive water use data for various sectors at a 0.5-degree resolution are from Huang et al. (2018), which are available from 1971 to 2010. DataHub: https://doi.org/10.5281/zenodo.1209296
 
 - **Reservoirs Data:**
-Global reservoir data are obtained from the GRanD dataset (Lehner et al., 2011). The GRanD database we use here only considers reservoirs with storage capacity values greater than 0.1 km3. Reservoirs with missing storage capacity and those identified with purposes such as tide control are dropped, reducing the total GranD reservoirs from 6862 to 6847. DataHub: https://doi.org/10.5072/zenodo.1075064 
+Global reservoir data are obtained from the GRanD dataset (Lehner et al., 2011). The GRanD database we use here only considers reservoirs with storage capacity values greater than 0.1 km3. Reservoirs with missing storage capacity and those identified with purposes such as tide control are dropped, reducing the total GranD reservoirs from 6862 to 6847. DataHub: https://doi.org/10.5072/zenodo.1075064
 
 - **Streamflow Data:**
-Observed stream flow data for model parameter identification and validation are obtained from the Global Runoff Data Center (GRDC)DataHub: https://www.bafg.de/GRDC 
+Observed stream flow data for model parameter identification and validation are obtained from the Global Runoff Data Center (GRDC)DataHub: https://www.bafg.de/GRDC
 
 ### Output data
 Abeshu, G.W. (2022). Xanthos-WM output dataset name. DataHub: https://doi.org/10.5072/zenodo.1075879
@@ -71,7 +71,7 @@ Fill in detailed info here or link to other documentation that is a thorough wal
 | `Figure_X.py` | Script to compare my outputs to the original | edit the `dir_in` at the beginning to your output directory|
 
 ***File Modification***\
-Check each file listed in [Table 5](#table5) and modify every directory within those files to the directory that holds your data. 
+Check each file listed in [Table 5](#table5) and modify every directory within those files to the directory that holds your data.
 <a name="table5"></a>
 **Table 5:** Files to be modified to run the model.
 
@@ -85,6 +85,7 @@ Use the scripts found in the `figures` directory to reproduce the figures used i
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
+| `Figure_4.ipynb`  | Script to generate Figure 5    | `Figure_4.ipynb change input/output directory path`  & run on notebook  |
 | `Figure_5.ipynb`  | Script to generate Figure 5    | `Figure_5.ipynb change input/output directory path`  & run on notebook  |
 | `Figure_6.ipynb`  | Script to generate Figure 6    | `Figure_6.ipynb change input/output directory path`  & run on notebook  |
 | `Figure_7.ipynb`  | Script to generate Figure 7    | `Figure_7.ipynb change input/output directory path`  & run on notebook  |
