@@ -1,0 +1,140 @@
+<mxfile host="65bd71144e">
+    <diagram id="izDKRjocz13XCrJrzfWl" name="Page-1">
+        <mxGraphModel dx="1374" dy="764" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="583" pageHeight="827" background="#FFFFFF" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="136" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#000033;fontSize=15;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="280" width="540" height="234" as="geometry"/>
+                </mxCell>
+                <mxCell id="135" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000033;dashed=1;fontSize=15;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="16" width="540" height="256" as="geometry"/>
+                </mxCell>
+                <mxCell id="144" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=15;fontColor=#000000;" edge="1" parent="1" source="3" target="142">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Runoff parameters sampling&lt;br style=&quot;font-size: 15px;&quot;&gt;&amp;nbsp;(e.g.,&amp;nbsp;&lt;span style=&quot;font-size: 15px; font-family: &amp;quot;times new roman&amp;quot;, serif;&quot;&gt;1 million combinations of parameter sets&lt;/span&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#FFFFFF;fontColor=#000000;strokeColor=#808080;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="29" y="25" width="190" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Simulated distributed &lt;br style=&quot;font-size: 15px;&quot;&gt;monthly runoff" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#77856C;fontColor=#ffffff;strokeColor=#808080;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="29" y="200" width="190" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Basin average annual runoff" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#CADDE1;fontColor=#000000;strokeColor=#808080;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="328" y="25" width="220" height="39" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="Simulated monthly streamflow" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#CADDE1;fontColor=#000000;strokeColor=#808080;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="328" y="376.5" width="220" height="41" as="geometry"/>
+                </mxCell>
+                <mxCell id="84" value="Top 100&amp;nbsp; sets of runoff parameters" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#FFFFFF;fontColor=#000000;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="328" y="200" width="220" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="85" value="Routing parameter sampling" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#FFFFFF;fontColor=#000000;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="29" y="300" width="190" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" value="Final simulated &lt;br style=&quot;font-size: 15px;&quot;&gt;monthly streamflow" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#CADDE1;fontColor=#000000;strokeColor=#808080;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="29" y="376.5" width="190" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="" style="endArrow=block;html=1;fontFamily=Times New Roman;fontSize=15;fontColor=#000000;fontStyle=0;strokeWidth=2;shadow=0;labelBackgroundColor=none;labelBorderColor=none;opacity=70;fillColor=none;strokeColor=#333333;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;edgeStyle=orthogonalEdgeStyle;" parent="1" source="4" target="5" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="217" y="335" as="sourcePoint"/>
+                        <mxPoint x="217" y="385" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="92" value="" style="endArrow=block;html=1;fontFamily=Times New Roman;fontSize=15;fontColor=#000000;fontStyle=0;strokeWidth=2;shadow=0;labelBackgroundColor=none;labelBorderColor=none;opacity=70;fillColor=none;strokeColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endFill=1;" parent="1" source="3" target="99" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-63" y="75" as="sourcePoint"/>
+                        <mxPoint x="-63" y="125" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="96" value="" style="endArrow=block;html=1;fontFamily=Times New Roman;fontSize=15;fontColor=#000000;fontStyle=0;strokeWidth=2;shadow=0;labelBackgroundColor=none;labelBorderColor=none;opacity=70;fillColor=none;strokeColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;endFill=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="83" target="86" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="197" y="555" as="sourcePoint"/>
+                        <mxPoint x="100" y="450" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="438" y="500"/>
+                            <mxPoint x="125" y="500"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="99" value="Xanthos runoff module" style="rounded=0;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#DCDCDC;fontColor=#000000;strokeColor=#808080;strokeWidth=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="29" y="124" width="190" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" value="&lt;p class=&quot;MsoNormal&quot; align=&quot;left&quot; style=&quot;margin-bottom: 0.0001pt; text-align: left; line-height: 80%; font-size: 15px;&quot;&gt;Runoff aggregation&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;opacity=70;fillColor=none;fontColor=#000000;strokeColor=none;strokeWidth=2;rotation=-90;arcSize=0;" parent="1" vertex="1">
+                    <mxGeometry x="177" y="118" width="150" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" value="Downselecting via&#10;monthly observed flow" style="rounded=0;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#708090;fontColor=#ffffff;strokeColor=#808080;strokeWidth=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="202" y="452" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" value="" style="endArrow=block;html=1;fontFamily=Times New Roman;fontSize=15;fontColor=#000000;fontStyle=0;strokeWidth=2;shadow=0;labelBackgroundColor=none;labelBorderColor=none;opacity=70;fillColor=none;strokeColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endFill=1;" parent="1" source="99" target="4" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="128" y="165" as="sourcePoint"/>
+                        <mxPoint x="128" y="195" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="107" value="" style="endArrow=none;html=1;fontFamily=Times New Roman;fontSize=15;fontColor=#000000;fontStyle=0;strokeWidth=2;shadow=0;labelBackgroundColor=none;labelBorderColor=none;opacity=70;fillColor=none;strokeColor=#333333;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endFill=0;startArrow=block;startFill=1;" parent="1" source="131" target="85" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="329" y="330.0000000000001" as="sourcePoint"/>
+                        <mxPoint x="220" y="330.0000000000001" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="112" value="&lt;span style=&quot;font-size: 15px; font-family: &amp;quot;times new roman&amp;quot;, serif;&quot;&gt;Downselection criteria&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;fontSize=15;" parent="1" vertex="1">
+                    <mxGeometry x="185" y="519" width="160" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="114" value="&lt;span style=&quot;font-size: 15px ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;Output&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;fontSize=15;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="519" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="115" value="&lt;span style=&quot;font-size: 15px; font-family: &amp;quot;times new roman&amp;quot;, serif;&quot;&gt;Sampling&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;fontSize=15;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="519" width="68" height="30.07" as="geometry"/>
+                </mxCell>
+                <mxCell id="118" value="&lt;span style=&quot;font-size: 15px ; font-family: &amp;#34;times new roman&amp;#34; , serif&quot;&gt;Module&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;fontSize=15;" parent="1" vertex="1">
+                    <mxGeometry x="488" y="519" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="122" value="" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#FFFFFF;fontColor=#000000;strokeColor=#333333;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="528" width="30" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="123" value="" style="rounded=0;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#647687;fontColor=#ffffff;strokeColor=#808080;strokeWidth=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="148.22" y="528" width="30" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="124" value="" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#CADDE1;fontColor=#000000;strokeColor=#808080;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="343" y="528" width="30" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="125" value="&lt;p class=&quot;MsoNormal&quot; style=&quot;margin-bottom: 0.0001pt ; line-height: 80% ; font-size: 15px&quot;&gt;&lt;br style=&quot;font-size: 15px;&quot;&gt;&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#E6E6E6;fontColor=#000000;strokeColor=#808080;strokeWidth=1;rotation=0;align=center;verticalAlign=middle;labelPosition=center;verticalLabelPosition=middle;" parent="1" vertex="1">
+                    <mxGeometry x="448" y="528" width="30" height="15" as="geometry"/>
+                </mxCell>
+                <mxCell id="128" value="" style="endArrow=block;html=1;fontFamily=Times New Roman;fontSize=15;fontColor=#000000;fontStyle=0;strokeWidth=2;shadow=0;labelBackgroundColor=none;labelBorderColor=none;opacity=70;fillColor=none;strokeColor=#333333;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5" target="84" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="360.25" y="64" as="sourcePoint"/>
+                        <mxPoint x="359.5000000000001" y="204" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="131" value="Xanthos river and water management module" style="whiteSpace=wrap;html=1;fontSize=15;fontFamily=Times New Roman;fillColor=#DCDCDC;strokeColor=#808080;fontColor=#000000;rounded=0;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;strokeWidth=1;" parent="1" vertex="1">
+                    <mxGeometry x="328" y="300" width="220" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="133" value="" style="endArrow=block;html=1;fontFamily=Times New Roman;fontSize=15;fontColor=#000000;fontStyle=0;strokeWidth=2;shadow=0;labelBackgroundColor=none;labelBorderColor=none;opacity=70;fillColor=none;strokeColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" parent="1" source="84" target="131" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="438.08" y="244" as="sourcePoint"/>
+                        <mxPoint x="438" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="134" value="" style="endArrow=block;html=1;fontFamily=Times New Roman;fontSize=15;fontColor=#000000;fontStyle=0;strokeWidth=2;shadow=0;labelBackgroundColor=none;labelBorderColor=none;opacity=70;fillColor=none;strokeColor=#333333;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endFill=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="131" target="83" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="448.0799999999999" y="341" as="sourcePoint"/>
+                        <mxPoint x="448" y="387" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="98" value="Downselecting via observed annual flow" style="rounded=0;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=15;fontStyle=0;gradientDirection=north;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#708090;fontColor=#ffffff;strokeColor=#808080;strokeWidth=1;spacingTop=0;spacing=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="445" y="103" width="109" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="137" value="Stage-2" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=bottom;whiteSpace=wrap;rounded=0;glass=0;fontColor=none;fontFamily=Garamond;fontSize=15;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="23" y="489" width="95.5" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="138" value="Stage-1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=bottom;whiteSpace=wrap;rounded=0;glass=0;fontColor=none;fontFamily=Garamond;fontSize=15;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="23" y="246" width="95.5" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="142" value="Simulated distributed &lt;br style=&quot;font-size: 15px;&quot;&gt;monthly runoff" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=15;fontStyle=0;shadow=0;labelBackgroundColor=none;labelBorderColor=none;fillColor=#CADDE1;fontColor=#000000;strokeColor=#808080;strokeWidth=1;" vertex="1" parent="1">
+                    <mxGeometry x="29" y="200" width="190" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

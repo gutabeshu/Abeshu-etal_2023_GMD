@@ -85,15 +85,18 @@ Use the scripts found in the `figures` directory to reproduce the figures used i
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `Figure_4.ipynb`  | Script to generate Figure 5    | `Figure_4.ipynb change input/output directory path`  & run on notebook  |
-| `Figure_5.ipynb`  | Script to generate Figure 5    | `Figure_5.ipynb change input/output directory path`  & run on notebook  |
-| `Figure_6.ipynb`  | Script to generate Figure 6    | `Figure_6.ipynb change input/output directory path`  & run on notebook  |
-| `Figure_7.ipynb`  | Script to generate Figure 7    | `Figure_7.ipynb change input/output directory path`  & run on notebook  |
-| `Figure_8.ipynb`  | Script to generate Figure 8    | `Figure_8.ipynb change input/output directory path`  & run on notebook  |
-| `Figure_9.ipynb`  | Script to generate Figure 9    | `Figure_9.ipynb change input/output directory path`  & run on notebook   |
-| `Figure_10.ipynb` | Script to generate Figure 10   | `Figure_10.ipynb change input/output directory path` & run on notebook  |
-| `Figure_11.ipynb` | Script to generate Figure 11   | `Figure_11.ipynb change input/output directory path` & run on notebook  |
-| `Figure_12.ipynb` | Script to generate Figure 12   | `Figure_12.ipynb change input/output directory path` & run on notebook  |
-| `Figure_13.ipynb` | Script to generate Figure 13   | `Figure_13.ipynb change input/output directory path` & run on notebook  |
-| `Figure_14.ipynb` | Script to generate Figure 14   | `Figure_14.ipynb change input/output directory path` & run on notebook  |
-| `Figure_15.ipynb` | Script to generate Figure 15   | `Figure_15.ipynb change input/output directory path` & run on notebook  |
+| `Figure_1.drawio`  | Sketch to generate Figure 1    | `Figure_1.drawio change input/output directory path` & run on notebook  |
+| `Figure_2.drawio`  | Sketch to generate Figure 2    | `Figure_2.drawio change input/output directory path` & run on notebook  |
+| `Figure_3.ipynb`  | Script to generate Figure 3    | `Figure_3.ipynb change input/output directory path` & run on notebook  |
+| `Figure_4.ipynb`  | Script to generate Figure 4    | `Figure_4.ipynb change input/output directory path` & run on notebook  |
+| `Figure_5.ipynb`  | Script to generate Figure 5    | `Figure_5.ipynb change input/output directory path` & run on notebook  |
+| `Figure_6.ipynb`  | Script to generate Figure 6    | `Figure_6.ipynb change input/output directory path` & run on notebook  |
+| `Figure_7.ipynb`  | Script to generate Figure 7    | `Figure_7.ipynb change input/output directory path` & run on notebook  |
+| `Figure_8.ipynb`  | Script to generate Figure 8    | `Figure_8.ipynb change input/output directory path` & run on notebook  |
+| `Figure_9.ipynb`  | Script to generate Figure 9    | `Figure_9.ipynb change input/output directory path` & run on notebook  |
+| `Figure_S1.ipynb` | Script to generate Figure S1   | `Figure_S1.ipynb change input/output directory path` & run on notebook  |
+| `Figure_S2.ipynb` | Script to generate Figure S2   | `Figure_S2.ipynb change input/output directory path` & run on notebook  |
+| `Figure_S3.ipynb` | Script to generate Figure S3   | `Figure_S3.ipynb change input/output directory path` & run on notebook  |
+| `Figure_S4.ipynb` | Script to generate Figure S4   | `Figure_S4.ipynb change input/output directory path` & run on notebook  |
+| `Figure_S5.ipynb` | Script to generate Figure S5   | `Figure_S5.ipynb change input/output directory path` & run on notebook  |
+| `Figure_S6.ipynb` | Script to generate Figure S6   | `Figure_S6.ipynb change input/output directory path` & run on notebook  |
