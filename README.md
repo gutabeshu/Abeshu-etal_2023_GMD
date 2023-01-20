@@ -48,7 +48,7 @@ Abeshu, G.W. (2022). Xanthos-WM output dataset name. DataHub: https://doi.org/10
 ## Contributing modeling software
 | Model | Version | Repository Link | DOI |
 |-------|---------|-----------------|-----|
-| Xanthos | version |https://github.com/gutabeshu/xanthos_managed steps for installation can be found at  https://github.com/JGCRI/xanthos | https://doi.10.5281/zenodo.5177210  |
+| Xanthos | version |https://github.com/gutabeshu/xanthos-wm steps for installation can be found at  https://github.com/JGCRI/xanthos | https://doi.10.5281/zenodo.5177210  |
 
 
 ## Reproduce my experiment
@@ -78,7 +78,7 @@ Check each file listed in [Table 5](#table5) and modify every directory within t
 
 | Model | Programming Language | Files to be Modified |
 |---|:-:|---|
-| Xanthos | Python 3.3+ | under workflow/flow-watch-setup/xanthos(basin number):  **pm_abcd_mrtm.ini** under workflow/: **Basin (basin number).py** |
+| Xanthos | Python 3.3+ | under workflow/flow-watch-setup/xanthos(basin number):  **pm_abcd_mrtm_managed.ini** under workflow/: **Basin (basin number).py** |
 
 
 ## Reproduce my figures
