@@ -55,7 +55,7 @@ Xanthos-WM output dataset name. DataHub: https://doi.org/10.5072/zenodo.1075879
 
 1. Get xanthos-wm from https://github.com/gutabeshu/xanthos-wm
 2. Install the software components required to conduct the experiment from [Contributing modeling software](#contributing-modeling-software)
-3. Download the supporting input data required to conduct the experiment from https://doi.org/10.5072/zenodo.1075813. Place it in the 'xanthos-wm' folder and unzip.
+3. Download the supporting input data required to conduct the experiment from https://doi.org/10.5281/zenodo.7557403. Place it in the 'xanthos-wm' folder and unzip.
 4. Under xanthos-wm find 'pm_abcd_mrtm_managed.ini' and date the following as needed:
    - 'basin_list = 229, 230, 231':provide list of IDs of basins you would like to run (IDs of CONUS basins are 7, 217 - 226, 228, 230, 233)
    - 'set_calibrate=1': If the basin is in CONUS this will automatically perform both the Stage-1 and Stage-2 calibration process shown below
