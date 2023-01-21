@@ -69,7 +69,7 @@ Xanthos-WM output dataset name. DataHub: https://doi.org/10.5072/zenodo.1075879
 | `Figure-X.py` | Script to compare my outputs to the original | edit the `dir_in` at the beginning to your output directory|
 
 ***File Modification***\
-Check each file listed in [Table 5](#table5) and modify every directory within those files to the directory that holds your data.
+Modify every directory within this file to the directory that holds your required input data.
 <a name="table5"></a>
 **Table 5:** Files to be modified to run the model.
 
