@@ -64,17 +64,9 @@ Xanthos-WM output dataset name. DataHub: https://doi.org/10.5072/zenodo.1075879
 4. After the run is complete the calibration process and model output can be found under 'xanthos-wm/example/output'
 5. Run the following scripts in the `workflow` directory to re-create this experiment:
 
-| Experiment Name | Description | How to Run |
-| --- | --- | --- |
-| `Runoff` | Script to run the first part of my experiment | under shell_script_to_run  **sbatch run_for_91basins.sh** edit directory to **runoff-watch-setup** in 'workflow'|
-| `Streamflow` | Script to run the last part of my experiment | under shell_script_to_run  **sbatch run_for_91basins.sh** edit directory to **flow-watch-setup** in 'workflow'|
-
-4. Download and unzip the output data from my experiment [Output data](https://doi.org/10.5072/zenodo.1075879)
-5. Run notebook scripts in the `figure` directory to compare my outputs to those from the publication
-
 | Script Name | Description | How to Run |
 | ---  | --- | --- |
-| `Figure_X.py` | Script to compare my outputs to the original | edit the `dir_in` at the beginning to your output directory|
+| `Figure-X.py` | Script to compare my outputs to the original | edit the `dir_in` at the beginning to your output directory|
 
 ***File Modification***\
 Check each file listed in [Table 5](#table5) and modify every directory within those files to the directory that holds your data.
