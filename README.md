@@ -1,7 +1,7 @@
 _your zenodo badge here_?
 
 # Abeshu et al., 2023, GMD
-**A new representation of water management for global hydrological models**
+**Enhancing the representation of water management in global hydrological models**
 
 Guta Wakbulcho Abeshu<sup>1</sup>, Fuqiang Tian<sup>2</sup>, Hongchang Hu<sup>2</sup>, Yuan Zhuang<sup>2</sup>,
 Mohamad Hejazi<sup>3</sup>, Sean Turner<sup>3</sup>, Thomas Wild<sup>3</sup>, Mengqi Zhao<sup>4</sup>,
