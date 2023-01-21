@@ -1,4 +1,4 @@
-https://doi.org/10.5072/zenodo.1149952
+https://doi.org/10.5281/zenodo.7557380
 
 # Abeshu et al., 2023, GMD
 **Enhancing the representation of water management in global hydrological models**
