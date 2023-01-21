@@ -63,11 +63,7 @@ Xanthos-WM output dataset name. DataHub: https://doi.org/10.5072/zenodo.1075879
 
 4. The calibration process and model output can be found under 'xanthos-wm/example/output'
 
-# To reproduce the figures
-1. Get the model output data can be obtained from https://doi.org/10.5072/zenodo.1075813
-2. Open the 'Figure-X.ipyn' you would like to reproduce
-3. Update the output data and figure out put directory at the begining
-4. Run the script corresponding to the figure of interest.
+
 
 2. Download and install the supporting input data required to conduct the experiment from [Input data](https://doi.org/10.5072/zenodo.1075813)
 3. Run the following scripts in the `workflow` directory to re-create this experiment:
@@ -96,6 +92,10 @@ Check each file listed in [Table 5](#table5) and modify every directory within t
 
 ## Reproduce my figures
 Use the scripts found in the `figures` directory to reproduce the figures used in this publication.
+1. Get the model output data from your simulation or can be obtained from https://doi.org/10.5072/zenodo.1075813
+2. Open the 'Figure-X.ipyn' you would like to reproduce
+3. Update directories for input data (i.e., model outputs) and figure output at the beginning
+4. Run the script corresponding to the figure of interest.
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
