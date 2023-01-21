@@ -75,7 +75,7 @@ Check each file listed in [Table 5](#table5) and modify every directory within t
 
 | Model | Programming Language | Files to be Modified |
 |---|:-:|---|
-| Xanthos | Python 3.3+ | xanthos-wm/:  **pm_abcd_mrtm_managed.ini**|
+| Xanthos | Python 3.3+ | xanthos-wm/**pm_abcd_mrtm_managed.ini**|
 
 
 ## Reproduce my figures
