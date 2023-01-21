@@ -78,7 +78,7 @@ Modify every directory within this file(Files to be modified) to the directory t
 
 ## Reproduce my figures
 Use the scripts found in the `figures` directory to reproduce the figures used in this publication.
-1. Get the model output data from your simulation or can be obtained from https://doi.org/10.5281/zenodo.7557403. The output data folder is labeled 'output'
+1. Get the model output data from your simulation or can be obtained from https://doi.org/10.5281/zenodo.7557403. The output data folder is labeled 'Data for Figures-Xanthos WM'
 2. Open the 'Figure-X.ipyn' you would like to reproduce
 3. Update directories for input data (i.e., model outputs) and figure output at the beginning
 4. Run the script corresponding to the figure of interest.
