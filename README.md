@@ -9,7 +9,7 @@ Guta Wakbulcho Abeshu<sup>1</sup>, Fuqiang Tian<sup>2</sup>, Thomas Wild<sup>3</
 <sup>3 </sup> Joint Global Change Research Institute, Pacific Northwest National Laboratory, College Park, MD 20740, US \
 <sup>4 </sup> Pacific Northwest National Laboratory, Richland, WA 99354, US \
 <sup>5 </sup> Earth System Science Interdisciplinary Center (ESSIC), University of Maryland, College Park, MD 20740, US \
-+ Now at King Abdullah Petroleum Studies and Research Center (KAPSARC), Riyadh, Saudi Arabia \
+<sup>* </sup> Now at King Abdullah Petroleum Studies and Research Center (KAPSARC), Riyadh, Saudi Arabia \
 
 
 \* corresponding author:  hongyili.jadison@gmail.com
