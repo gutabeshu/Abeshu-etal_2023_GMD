@@ -59,7 +59,7 @@ Xanthos-WM output dataset name. DataHub: https://doi.org/10.5281/zenodo.7557403
 4. Under xanthos-wm find 'pm_abcd_mrtm_managed.ini' and date the following as needed:
    - 'basin_list = 229, 230, 231':provide list of IDs of basins you would like to run (IDs of CONUS basins are 7, 217 - 226, 228, 230, 233)
    - 'set_calibrate=1': If the basin is in CONUS this will automatically perform both the Stage-1 and Stage-2 calibration process shown below
-        <p align="center"> <img src="workflow/Figure-3-Runoff Parameters Selection Strategy.png"></p>
+        <p align="center"> <img src="Runoff Parameters Selection Strategy.png"></p>
 
 4. After the run is complete the calibration process and model output can be found under 'xanthos-wm/example/output'
 5. Run the following scripts in the `workflow` directory to re-create this experiment:
