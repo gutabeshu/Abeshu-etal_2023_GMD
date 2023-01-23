@@ -3,23 +3,22 @@ https://doi.org/10.5281/zenodo.7557380
 # Abeshu et al., 2023, GMD
 **Enhancing the representation of water management in global hydrological models**
 
-Guta Wakbulcho Abeshu<sup>1</sup>, Fuqiang Tian<sup>2</sup>, Hongchang Hu<sup>2</sup>, Yuan Zhuang<sup>2</sup>,
-Mohamad Hejazi<sup>3</sup>, Sean Turner<sup>3</sup>, Thomas Wild<sup>3</sup>, Mengqi Zhao<sup>4</sup>,
-A F M Kamal Chowdhury<sup>5</sup>, Chris Vernon<sup>3</sup>, and Hong-Yi Li<sup>1\*</sup>
-
-<sup>1 </sup> Department of Civil and Environmental Engineering, University of Houston, Houston, TX, 77204, US
-<sup>2 </sup> Department of Hydraulic Engineering, Tsinghua University, Beijing, China
+Guta Wakbulcho Abeshu<sup>1</sup>, Fuqiang Tian<sup>2</sup>, Thomas Wild<sup>3</sup>, Mengqi Zhao<sup>4</sup>, Sean Turner<sup>3</sup>, A F M Kamal Chowdhury<sup>5</sup>, Chris R. Vernon<sup>4</sup>, Hongchang Hu<sup>2</sup>, Yuan Zhuang<sup>2</sup>, Mohamad Hejazi<sup>3+</sup> and Hong-Yi Li1<sup>1*</sup>
+<sup>1 </sup> Department of Civil and Environmental Engineering, University of Houston, Houston, 77204, US
+<sup>2 </sup> Department of Hydraulic Engineering, Tsinghua University, Beijing, 100084, China
 <sup>3 </sup> Joint Global Change Research Institute, Pacific Northwest National Laboratory, College Park, MD 20740, US
 <sup>4 </sup> Pacific Northwest National Laboratory, Richland, WA 99354, US
-<sup>5 </sup> Earth System Science Interdisciplinary Center (ESSIC), University of Maryland, College Park, MD 20740, US
+<sup>5 </sup> Earth System Science Interdisciplinary Center (ESSIC), University of Maryland, College Park, MD 20740, U.S.
++ Now at King Abdullah Petroleum Studies and Research Center (KAPSARC), Riyadh, Saudi Arabia
+
 
 \* corresponding author:  hongyili.jadison@gmail.com
 
 ## Abstract
-This study enhances an existing global hydrology model, Xanthos, by adding a new water management module, treating irrigation, hydropower, and flood-control reservoirs differently. We determine a unique operation rule for each of 3790 large reservoirs globally based on their primary purposes, i.e., hydropower, irrigation, flood-control or others. We apply the enhanced Xanthos globally at a 0.5-degree spatial resolution. The model performance is satisfactory in reproducing observed stream flow variability under normal and water scarcity conditions at 91 large river basins with good data availability. Hydropower reservoirs' simulated storage and release patterns are quite different from flood-control reservoirs, suggesting significant implications for freshwater resource management at the regional or larger scales. This new global water management modeling framework will allow for the assessment of future reservoir development and management from a coupled human-natural system perspective.
+This study enhances an existing global hydrological model (GHM), Xanthos, by adding a new water management module that distinguishes between the operational characteristics of irrigation, hydropower, and flood control reservoirs. We remapped reservoirs in the GranD database to Xanthos' 0.5-degree spatial resolution so that a single lumped reservoir exists per grid cell, which yielded 3790 large reservoirs. We implemented unique operation rules for each reservoir type based on their primary purposes. In particular, hydropower reservoirs have been treated as flood control reservoirs in previous GHM studies, while here, we determined the operation rules for hydropower reservoirs via optimization that maximizes long-term hydropower production. We conducted global simulations using the enhanced Xanthos and validated monthly streamflow for 91 large river basins where high-quality observed streamflow data were available. A total of 1878 (296 hydropower, 486 irrigation, and 1096 flood control and others) out of the 3790 reservoirs are located in the 91 basins and are part of our reported results. The Kling-Gupta Efficient (KGE) value (after adding the new water management) is ≥ 0.5 and ≥ 0.0 in 39 and 81 basins, respectively. After adding the new water management module, model performance improved for 75 out of 91 basins and worsened for only seven. To measure the relative difference between explicitly representing hydropower reservoirs and representing hydropower reservoirs as flood control reservoirs (as is commonly done in other GHMs), we use normalized-root-mean-square-error (NRMSE) and the coefficient of determination (R2). Out of the 296 hydropower reservoirs, NRMSE is > 0.25 (i.e., considering 0.25 to represent a moderate difference) for over 44% of the 296 reservoirs when comparing both the simulated reservoir releases and storage time series between the two simulations. We suggest that correctly representing hydropower reservoirs in GHMs could have important implications for our understanding and management of freshwater resource challenges at regional-to-global scales. This enhanced global water management modeling framework will allow for the analysis of future global reservoir development and management from a coupled human-earth system perspective.
 
 ## Journal reference
-Abeshu, G.W., Tian, F., Hu, H., Zhuang, Y., Hejazi, M., Turner, S., Wild, T., Zhao, M., Chowdhury, K., Vernon, C., and Li, H., A new water management module for global hydrologic models. GMD
+Abeshu, G.W., Tian, F., Wild, T., Zhao, M., Sean Turner, Chowdhury, K., Vernon, C., Hu, H., Zhuang, Y., Hejazi, M., and Li, H., A new water management module for global hydrologic models. GMD
 
 ## Code reference
 The model used in this manuscript can be found at
@@ -61,8 +60,7 @@ Xanthos-WM output dataset name. DataHub: https://doi.org/10.5281/zenodo.7557403
    - 'set_calibrate=1': If the basin is in CONUS this will automatically perform both the Stage-1 and Stage-2 calibration process shown below
         <p align="center"> <img src="Runoff Parameters Selection Strategy.png"></p>
 
-4. After the run is complete the calibration process and model output can be found under 'xanthos-wm/example/output'
-5. Run the following scripts in the `workflow` directory to re-create this experiment:
+5. After the run is complete the calibration process and model output can be found under 'xanthos-wm/example/output'
 
 | Script Name | Description | How to Run |
 | ---  | --- | --- |
