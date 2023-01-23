@@ -46,7 +46,7 @@ Xanthos-WM output dataset name. DataHub: https://doi.org/10.5281/zenodo.7557403
 ## Contributing modeling software
 | Model | Version | Repository Link | DOI |
 |-------|---------|-----------------|-----|
-| Xanthos | version |https://github.com/gutabeshu/xanthos-wm steps for installation can be found at  https://github.com/JGCRI/xanthos | https://doi.10.5281/zenodo.5177210  |
+| Xanthos | version |https://github.com/gutabeshu/xanthos-wm steps for installation can be found at  https://github.com/JGCRI/xanthos | https://doi.org/10.5281/zenodo.7557380  |
 
 
 ## Reproduce my experiment
