@@ -5,8 +5,8 @@ https://doi.org/10.5281/zenodo.7557380
 
 Guta Wakbulcho Abeshu<sup>1</sup>, Fuqiang Tian<sup>2</sup>, Thomas Wild<sup>3</sup>, Mengqi Zhao<sup>4</sup>, Sean Turner<sup>3</sup>, A F M Kamal Chowdhury<sup>5</sup>, Chris R. Vernon<sup>4</sup>, Hongchang Hu<sup>2</sup>, Yuan Zhuang<sup>2</sup>, Mohamad Hejazi<sup>3+</sup> and Hong-Yi Li1<sup>1*</sup>
 
-<sup>1 </sup> Department of Civil and Environmental Engineering, University of Houston, Houston, 77204, US
-\<sup>2 </sup> Department of Hydraulic Engineering, Tsinghua University, Beijing, 100084, China
+<sup>1 </sup> Department of Civil and Environmental Engineering, University of Houston, Houston, 77204, US \
+<sup>2 </sup> Department of Hydraulic Engineering, Tsinghua University, Beijing, 100084, China
 <sup>3 </sup> Joint Global Change Research Institute, Pacific Northwest National Laboratory, College Park, MD 20740, US
 <sup>4 </sup> Pacific Northwest National Laboratory, Richland, WA 99354, US
 <sup>5 </sup> Earth System Science Interdisciplinary Center (ESSIC), University of Maryland, College Park, MD 20740, U.S.
