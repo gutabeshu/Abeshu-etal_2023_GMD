@@ -73,12 +73,28 @@ Modify every directory within this file(Files to be modified) to the directory t
 | Xanthos | Python 3.3+ | xanthos-wm/**pm_abcd_mrtm_managed.ini**|
 
 
+## Environment setup
+
+A conda environment file is provided to install all required dependencies in one step:
+
+```bash
+conda env create -f environment.yml
+conda activate xanthos-wm-figures
+```
+
+To keep notebook outputs out of version control (recommended), install the git filter after activating the environment:
+
+```bash
+nbstripout --install --attributes .gitattributes
+```
+
 ## Reproduce my figures
+
 Use the scripts found in the `figures` directory to reproduce the figures used in this publication.
-1. Get the model output data from your simulation or can be obtained from https://doi.org/10.5281/zenodo.7557403. The output data folder is labeled 'Data for Figures-Xanthos WM'
-2. Open the 'Figure-X.ipyn' you would like to reproduce
-3. Update directories for input data (i.e., model outputs) and figure output at the beginning
-4. Run the script corresponding to the figure of interest.
+
+1. Get the model output data from your simulation or download it from https://doi.org/10.5281/zenodo.7557403. The output data folder is labeled `Data for Figures-Xanthos WM`.
+2. Edit **`figures/config.yml`** — set `dir_in` to the path of the downloaded folder and `dir_out` to where you want figures saved. All other paths (including GRanD) are auto-derived from `dir_in`. The only optional entry is `coastlines_path` (Figures 3, 5, 9; free Natural Earth download) and `dir_xanthos_input` (Figure 6 climate cells only; from the xanthos-wm repo).
+3. Open the `Figure-X.ipynb` you want to reproduce and run all cells.
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |

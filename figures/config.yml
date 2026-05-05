@@ -1,0 +1,33 @@
+# =============================================================================
+# Path Configuration for Abeshu-etal_2023_GMD Figure Scripts
+# =============================================================================
+# Only TWO paths are required. All other paths are auto-derived from dir_in.
+# Download the Zenodo data from: https://doi.org/10.5281/zenodo.7557403
+# The downloaded folder is named "Data for Figures-Xanthos WM".
+
+# ------------------------------------------------------------------
+# REQUIRED — set these two paths before running any notebook
+# ------------------------------------------------------------------
+
+# Root of the Zenodo data folder ("Data for Figures-Xanthos WM")
+dir_in: "/Users/abes208/Downloads/Data for Figures-Xanthos WM 2"
+
+# Directory where generated figures will be saved (created automatically)
+dir_out: "/Users/abes208/Downloads/xanthos-wm-figures-output"
+
+# ------------------------------------------------------------------
+# OPTIONAL — only needed for Figures 3, 5, 9
+# Natural Earth 50m coastline shapefile (free download):
+#   https://www.naturalearthdata.com/downloads/50m-physical-vectors/
+# ------------------------------------------------------------------
+
+coastlines_path: "/path/to/ne_50m_coastline/ne_50m_coastline.shp"
+
+# ------------------------------------------------------------------
+# NOT IN ZENODO — Figure 6 requires Xanthos climate forcing files
+# (gswp3_precip, ET.RS_METEO, ETscaler, penman_monteith PET).
+# These come from the Xanthos-WM model's example/input/ directory:
+#   https://github.com/gutabeshu/xanthos-wm
+# ------------------------------------------------------------------
+
+dir_xanthos_input: "/Users/abes208/Downloads/example/input"

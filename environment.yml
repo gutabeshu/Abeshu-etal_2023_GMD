@@ -1,0 +1,28 @@
+name: xanthos-wm-figures
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - numpy<2.0          # numpy 2.x has stricter array-shape rules that break some plots
+  - pandas>=1.3        # 2.x works too; the notebooks use keyword-only drop() syntax
+  - matplotlib>=3.3,<3.5  # proplot 0.9.x requires matplotlib < 3.5
+  - scipy
+  - seaborn
+  - xarray
+  - geopandas
+  - cartopy
+  - jupyter
+  - notebook
+  - tqdm
+  - scikit-learn
+  - pyyaml
+  - pytest
+  - colorcet
+  - cmcrameri
+  - spotpy
+  - scienceplots      # required for plt.style.use('science')
+  - nbstripout
+  - pip
+  - pip:
+    - proplot>=0.9.5  # install via pip — conda-forge build may not match matplotlib<3.5
